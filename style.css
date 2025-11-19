@@ -80,7 +80,7 @@ body {
 }
 
 header {
-    background: var(--gradient-primary);
+    background: #000000 !important;
     color: white;
     position: sticky;
     top: 0;
@@ -132,7 +132,7 @@ header {
 
 #searchBar:focus {
     background: var(--text);
-    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.25), var(--shadow);
+    box-shadow: 0 0 0 3px rgba(0,0,0,0.25), var(--shadow);
     transform: translateY(-1px);
     color: var(--glass);
 }
@@ -191,9 +191,27 @@ header {
     box-shadow: var(--shadow);
 }
 
-/* Main content, zones, popups, and footer remain unchanged, only references to --primary or gradient-primary now use black */
+/* Force headers and popups to black */
 .zone-header,
 .popup-header,
 #settings-button {
-    background: var(--gradient-primary);
+    background: #000000 !important;
+}
+
+/* Remove pink/red glow on hover */
+.zone-item:hover button {
+    background: rgba(0,0,0,0.05);
+    color: var(--primary);
+}
+
+:root {
+    --shadow-glow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+.dark-mode {
+    --shadow-glow: 0 0 20px rgba(0, 0, 0, 0.4);
+}
+
+#searchBar:focus {
+    box-shadow: 0 0 0 3px rgba(0,0,0,0.25), var(--shadow);
 }
