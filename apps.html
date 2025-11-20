@@ -4,7 +4,6 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>TOS</title>
-<!-- Your existing style.css -->
 <link rel="stylesheet" href="style.css" />
 <style>
 body {
@@ -15,7 +14,7 @@ body {
   padding: 20px;
 }
 
-/* Header styled like your homepage, with "TOS" as logo text */
+/* Header with "TOS" logo and "Games" button, connected to top */
 header {
   background: var(--gradient-primary);
   color: white;
@@ -24,10 +23,11 @@ header {
   z-index: 100;
   box-shadow: var(--shadow-lg);
   backdrop-filter: blur(20px);
+  margin: -20px -20px 20px -20px; /* connect to page edges */
+  padding: 1rem 1.5rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1rem 1.5rem;
 }
 .header-content {
   display: flex;
@@ -51,12 +51,18 @@ a.back-link {
   gap: 0.5rem;
   font-size: 1rem;
   color: #fff;
-  text-decoration: underline;
-  cursor: pointer;
+  text-decoration: none;
   font-weight: 600;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius);
+  box-shadow: 0 0 10px #fff, 0 0 20px #fff inset;
+  transition: all 0.3s;
+}
+a.back-link:hover {
+  background-color: rgba(255,255,255,0.2);
 }
 
-/* Main content styles, matching your homepage zones grid */
+/* Main content area, matching homepage grid style */
 main {
   max-width: 1200px;
   margin: 0 auto;
@@ -72,7 +78,7 @@ h1 {
   gap: 1.5rem;
 }
 
-/* App card style matching zone style */
+/* App cards styled like zone items */
 .app-card {
   background: var(--gradient-surface);
   border: 1px solid var(--border);
@@ -112,9 +118,8 @@ h1 {
 <body>
 <header>
   <div class="header-content">
-    <!-- Logo text changed to "TOS" -->
     <div class="logo">TOS</div>
-    <!-- "Games" button with icon (replace 'games-icon.png' with your icon) -->
+    <!-- "Games" button with icon -->
     <a href="index.html" class="back-link">
       <img src="games-icon.png" alt="Games" style="width:24px; height:24px; margin-right:0.5rem;">
       Games
@@ -141,7 +146,7 @@ h1 {
 <script>
 function openApp(appName) {
   alert("Open " + appName + " - implement your app logic here.");
-  // Redirect to app page, e.g.,
+  // Example: redirect to app page
   // window.location.href = 'app.html';
 }
 </script>
