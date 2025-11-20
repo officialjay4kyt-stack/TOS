@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Games - Apps</title>
-<!-- Use your existing style.css -->
+<title>TOS</title>
+<!-- Your style.css -->
 <link rel="stylesheet" href="style.css" />
 <style>
 body {
@@ -15,82 +15,73 @@ body {
   padding: 20px;
 }
 
-/* Header styling (matching your main page) */
+/* Header similar to your homepage */
 header {
+  background: var(--gradient-primary);
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: var(--shadow-lg);
+  backdrop-filter: blur(20px);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 20px;
+  padding: 1rem 1.5rem;
 }
 .header-content {
-  width: 100%;
   display: flex;
   align-items: center;
+  width: 100%;
   justify-content: space-between;
   gap: 1.5rem;
 }
 .logo {
   font-size: 1.75rem;
   font-weight: 800;
+  letter-spacing: -0.02em;
   background: linear-gradient(135deg, #ffffff 0%, rgba(255,255,255,0.8) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
 }
-.back-button {
+a.back-link {
   display: flex;
   align-items: center;
   gap: 0.5rem;
   font-size: 1rem;
   color: #fff;
-  cursor: pointer;
   text-decoration: underline;
-}
-.back-button img {
-  width: 24px;
-  height: 24px;
-  transition: transform 0.2s;
-}
-.back-button:hover img {
-  transform: rotate(15deg);
+  cursor: pointer;
 }
 
-/* Main content layout similar to your homepage */
+/* Main content styles similar to homepage */
 main {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 2rem 1rem;
-  padding-bottom: 6rem;
 }
-
 h1 {
   font-size: 2rem;
   margin-bottom: 1rem;
 }
-
-/* Apps grid styled like your zones grid */
 #container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 1.5rem;
 }
 
-/* App card style similar to your zone-item style */
+/* App card styles */
 .app-card {
   background: var(--gradient-surface);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
-  overflow: hidden;
+  padding: 15px;
   cursor: pointer;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 15px;
   box-shadow: var(--shadow-sm);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .app-card:hover {
   transform: translateY(-8px) scale(1.02);
@@ -120,15 +111,15 @@ h1 {
 <header>
   <div class="header-content">
     <div class="logo">gn-math</div>
-    <!-- Back to Home button with icon -->
-    <div class="back-button" onclick="window.location='index.html'">
-      <img src="home-icon.png" alt="Home" />
-      Home
-    </div>
+    <!-- "Games" button with icon (replace 'games-icon.png' with your icon) -->
+    <a href="index.html" class="back-link" style="display:flex; align-items:center;">
+      <img src="games-icon.png" alt="Games" style="width:24px; height:24px; margin-right:0.5rem;">
+      Games
+    </a>
   </div>
 </header>
 
-<h1>Our Games & Apps</h1>
+<h1>Apps</h1>
 <div id="container">
   <!-- Example app cards -->
   <div class="app-card" onclick="openApp('app1')">
@@ -141,14 +132,14 @@ h1 {
     <div class="app-name">App Two</div>
     <div class="app-desc">Description of App Two.</div>
   </div>
-  <!-- Add more apps as needed -->
+  <!-- Add more apps here -->
 </div>
 
 <script>
 function openApp(appName) {
-  alert("Open " + appName + " - implement your app opening logic here.");
-  // Example: redirect or open app URL
-  // window.location.href = 'app-url.html';
+  alert("Open " + appName + " - implement your app logic here.");
+  // Example: redirect to app page
+  // window.location.href = 'app-page.html';
 }
 </script>
 </body>
