@@ -7,78 +7,81 @@
 <link rel="stylesheet" href="style.css" />
 <style>
 body {
-  background: var(--bg);
-  color: var(--text);
-  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', system-ui, sans-serif;
   margin: 0;
-  padding: 20px;
+  padding: 0;
+  background-color: #0f172a; /* dark blue background */
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', system-ui, sans-serif;
+  color: var(--text);
 }
 
-/* Header with "TOS" logo and "Games" button, connected to top */
+/* Header style matching your homepage, fixed position, seamless top */
 header {
   background: var(--gradient-primary);
-  color: white;
   position: sticky;
   top: 0;
-  z-index: 100;
-  box-shadow: var(--shadow-lg);
-  backdrop-filter: blur(20px);
-  margin: -20px -20px 20px -20px; /* connect to page edges */
-  padding: 1rem 1.5rem;
+  width: 100%;
+  z-index: 999;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  padding: 1rem 2rem;
+  box-shadow: var(--shadow-lg);
+  backdrop-filter: blur(20px);
+  margin: 0;
+  /* Remove margin to keep it connected to the top */
 }
+
+/* Make sure the header spans full width and is connected */
 .header-content {
   display: flex;
   align-items: center;
-  width: 100%;
   justify-content: space-between;
-  gap: 1.5rem;
+  width: 100%;
 }
+
+/* TOS logo style, centered vertically, matching your homepage */
 .logo {
   font-size: 1.75rem;
   font-weight: 800;
   letter-spacing: -0.02em;
-  background: linear-gradient(135deg, #ffffff 0%, rgba(255,255,255,0.8) 100%);
+  background: linear-gradient(135deg, #ffffff 0%, rgba(255, 255, 255, 0.8) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
+
+/* "Games" button, same glow and position as on homepage */
 a.back-link {
   display: flex;
   align-items: center;
   gap: 0.5rem;
   font-size: 1rem;
-  color: #fff;
-  text-decoration: none;
-  font-weight: 600;
   padding: 0.5rem 1rem;
+  background-color: var(--primary);
+  color: #fff;
   border-radius: var(--radius);
   box-shadow: 0 0 10px #fff, 0 0 20px #fff inset;
+  text-decoration: none;
+  font-weight: 600;
   transition: all 0.3s;
 }
 a.back-link:hover {
   background-color: rgba(255,255,255,0.2);
 }
 
-/* Main content area, matching homepage grid style */
+/* Main container for apps, matching your homepage grid style */
 main {
   max-width: 1200px;
-  margin: 0 auto;
+  margin: 2rem auto;
+  padding: 0 1rem;
 }
 h1 {
   font-size: 2rem;
   margin-bottom: 1rem;
   font-family: 'SF Pro Display', sans-serif;
-}
-#container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1.5rem;
+  text-align: center;
 }
 
-/* App cards styled like zone items */
+/* App cards styled like zone items for seamless look */
 .app-card {
   background: var(--gradient-surface);
   border: 1px solid var(--border);
@@ -121,7 +124,7 @@ h1 {
     <div class="logo">TOS</div>
     <!-- "Games" button with icon -->
     <a href="index.html" class="back-link">
-      <img src="games-icon.png" alt="Games" style="width:24px; height:24px; margin-right:0.5rem;">
+      <img src="games-icon.png" alt="Games" style="width:24px; height:24px; margin-right:0.5rem;" />
       Games
     </a>
   </div>
@@ -140,13 +143,11 @@ h1 {
     <div class="app-name">App Two</div>
     <div class="app-desc">Description of App Two.</div>
   </div>
-  <!-- Add more apps as needed -->
 </div>
 
 <script>
 function openApp(appName) {
   alert("Open " + appName + " - implement your app logic here.");
-  // Example: redirect to app page
   // window.location.href = 'app.html';
 }
 </script>
