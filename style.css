@@ -22,7 +22,7 @@
     --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
     --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
     --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
-    --shadow-glow: 0 0 20px rgba(252, 38, 81, 0.3);
+    --shadow-glow: 0 0 20px rgba(255, 255, 255, 0.3);
     --radius: 12px;
     --radius-sm: 8px;
     --radius-lg: 16px;
@@ -616,6 +616,7 @@ footer {
 #settings:hover {
     box-shadow: none;
 }
+
 
 
 
