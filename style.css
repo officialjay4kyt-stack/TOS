@@ -618,6 +618,22 @@ footer {
     box-shadow: none;
 }
 
+.app-link {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background-color: var(--primary);
+  color: white;
+  border-radius: var(--radius);
+  font-size: 16px;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 0 0 10px #fff, 0 0 20px #fff inset;
+}
+.app-link:hover {
+  background-color: rgba(255,255,255,0.2);
+}
+
+
 
 
 
