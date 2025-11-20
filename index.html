@@ -1,161 +1,133 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-    <link rel="icon" type="image/png" href="favicon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
-    <link rel="apple-touch-icon" href="/favicon.png">
-    <script>
-        window.addEventListener('beforeunload', function (event) {
-            event.preventDefault();
-            event.returnValue = '';
-            return 'Are you sure you want to leave? Any unsaved changes will be lost.';
-        });
-    </script>
-    <script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5521219086088837" crossorigin="anonymous"></script>
-    <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-WX5VS54ZDW"></script>
-    <meta name="google-adsense-account" content="ca-pub-5521219086088837">
-    <script>
-        window.dataLayer = window.dataLayer || [];
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>TOS</title>
+<!-- Your existing head content... -->
+<link rel="stylesheet" href="style.css">
+<style>
+  /* Your existing styles... */
 
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
-        gtag('config', 'G-WX5VS54ZDW');
-    </script>
-    <script async src="https://fundingchoicesmessages.google.com/i/pub-5521219086088837?ers=1"></script><script>(function() {function signalGooglefcPresent() {if (!window.frames['googlefcPresent']) {if (document.body) {const iframe = document.createElement('iframe'); iframe.style = 'width: 0; height: 0; border: none; z-index: -1000; left: -1000px; top: -1000px;'; iframe.style.display = 'none'; iframe.name = 'googlefcPresent'; document.body.appendChild(iframe);} else {setTimeout(signalGooglefcPresent, 0);}}}signalGooglefcPresent();})();</script>
-    <script src="https://cdn.jsdelivr.net/gh/gn-math/gn-math.github.io@main/gnmath.js"></script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TOS</title>
-    <meta name="title" content="TOS">
-    <meta name="description" content="The Best Organization, TOS, All In One.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://tos.github.io/">
-    <meta property="og:title" content="TOS">
-    <meta property="og:description" content="The Best Organization, TOS, All In One.">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:url" content="https://tos.github.io/">
-    <meta name="twitter:title" content="TOS">
-    <meta name="twitter:description" content="The Best Organization, TOS, All In One.">
-    <link rel="stylesheet" href="style.css">
+  /* Add this at the end of your style block for the "Apps" link button: */
+  .app-link {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 4px;
+    font-size: 16px;
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow: 0 0 10px #fff, 0 0 20px #fff inset;
+  }
+  .app-link:hover {
+    background-color: rgba(255,255,255,0.2);
+  }
+</style>
 </head>
 <body class="dark-mode">
-    <header>
-        <div class="header-content">
-            <div class="logo">TOS</div>
-            <div class="search-container">
-                <input type="text" id="searchBar" placeholder="Type Inside Me 👉 👈..." oninput="filterZones()">
-                <select id="sortOptions" onchange="sortZones()">
-                    <option value="name">Name</option>
-                    <option value="id">Release</option>
-                    <option value="popular">Popular</option>
-                </select>
-            </div>
-            <div class="control-buttons">
-                <button id="settings" style="background-color: var(--primary-color); color: white; border: none; border-radius: 4px; padding: 0.5rem 1rem; font-size: 16px; cursor: pointer;"><img src="setting.png" alt="settings" width="45px"></button>
-                <button id="appsButton" style="background-color: var(--primary-color); color: white; border: none; border-radius: 4px; padding: 0.5rem 1rem; font-size: 16px; cursor: pointer;">Apps</button>
-            </div>
-        </div>
-    </header>
-    <ins class="adsbygoogle"
-    style="display:block; text-align:center;"
-    data-ad-client="ca-pub-5521219086088837"
-    data-ad-slot="5549138288"
-    data-ad-format="auto"
-    data-full-width-responsive="true"></ins>
-   <script>
-    (adsbygoogle = window.adsbygoogle || []).push({});
-   </script>
 
-    <main>
-        <details id="featuredZonesWrapper" open>
-            <summary id="allZonesSummary" style="font-size: 1.2rem; font-weight: bold; cursor: pointer;">Featured Zones</summary>
-            <div id="featuredZones" class="zone-container"></div>
-        </details>
-        <br><hr><br>
-        <details id="allZonesWrapper" open>
-            <summary id="allSummary" style="font-size: 1.2rem; font-weight: bold; cursor: pointer;">All Zones</summary>
-            <div id="container">Loading...</div>
-        </details>
-    </main>
+<header>
+  <div class="header-content">
+    <div class="logo">TOS</div>
+    <div class="search-container">
+      <input type="text" id="searchBar" placeholder="Type Inside Me 👉 👈..." oninput="filterZones()">
+      <select id="sortOptions" onchange="sortZones()">
+        <option value="name">Name</option>
+        <option value="id">Release</option>
+        <option value="popular">Popular</option>
+      </select>
+    </div>
+    <div class="control-buttons">
+      <button id="settings" style="background-color: var(--primary-color); color: white; border: none; border-radius: 4px; padding: 0.5rem 1rem; font-size: 16px; cursor: pointer;">
+        <img src="setting.png" alt="settings" width="45px" />
+      </button>
+      <!-- Your new "Apps" link -->
+      <a href="apps.html" class="app-link">Apps</a>
+    </div>
+  </div>
+</header>
 
-    <div id="appsSection" style="display:none; padding: 2rem; background-color: var(--bg); 
+<main>
+  <details id="featuredZonesWrapper" open>
+    <summary id="allZonesSummary" style="font-size: 1.2rem; font-weight: bold; cursor: pointer;">Featured Zones</summary>
+    <div id="featuredZones" class="zone-container"></div>
+  </details>
+  <br><hr><br>
+  <details id="allZonesWrapper" open>
+    <summary id="allSummary" style="font-size: 1.2rem; font-weight: bold; cursor: pointer;">All Zones</summary>
+    <div id="container">Loading...</div>
+  </details>
+</main>
+
+<div id="appsSection" style="display:none; padding: 2rem; background-color: var(--bg); 
     color: var(--text); flex-direction: column; align-items: center;">
-        <h2 style="text-align:center; margin-bottom: 1rem;">Apps</h2>
-        <button onclick="showMain()" style="margin-bottom: 1rem; padding: 0.5rem 1rem;    
-    border: 2px solid #fff; border-radius: var(--radius); background: transparent; color: 
-    #fff; cursor: pointer; box-shadow: 0 0 10px #fff, 0 0 20px #fff inset;">Back to 
-    Games</button>
-        <div class="app-grid">
-            <button class="app-btn" onclick="openApp('youtube')">YouTube</button>
-            <button class="app-btn" onclick="openApp('spotify')">Spotify</button>
-            <button class="app-btn" onclick="openApp('twitch')">Twitch</button>
-            <!-- You can add more app buttons here -->
-        </div>
+  <h2 style="text-align:center; margin-bottom: 1rem;">Apps</h2>
+  <button onclick="showMain()" style="margin-bottom: 1rem; padding: 0.5rem 1rem; border: 2px solid #fff; border-radius: var(--radius); background: transparent; color: #fff; cursor: pointer; box-shadow: 0 0 10px #fff, 0 0 20px #fff inset;">Back to Games</button>
+  <div class="app-grid">
+    <button class="app-btn" onclick="openApp('youtube')">YouTube</button>
+    <button class="app-btn" onclick="openApp('spotify')">Spotify</button>
+    <button class="app-btn" onclick="openApp('twitch')">Twitch</button>
+    <!-- You can add more app buttons here -->
+  </div>
 </div>
 
-    <div id="zoneViewer">
-        <div class="zone-header">
-            <div class="zone-title">
-                <h2 id="zoneName">zone</h2>
-                <span id="zoneId" style="display: none;"></span>
-                <a id="zoneAuthor" href="#" target="_blank">by Author</a>
-            </div>
-            <div class="zone-controls">
-                <button onclick="fullscreenZone()">Fullscreen</button>
-                <button onclick="aboutBlank()">Open in New Tab</button>
-                <button onclick="downloadZone()">Download</button>
-                <button onclick="closeZone()">Close</button>
-            </div>
-        </div>
-        <iframe id="zoneFrame"></iframe>
+<div id="zoneViewer">
+  <div class="zone-header">
+    <div class="zone-title">
+      <h2 id="zoneName">zone</h2>
+      <span id="zoneId" style="display: none;"></span>
+      <a id="zoneAuthor" href="#" target="_blank">by Author</a>
     </div>
-
-    <div id="popupOverlay">
-        <div class="popup">
-            <div class="popup-header">
-                <h3 id="popupTitle">Title</h3>
-                <button id="popupClose" onclick="closePopup()">×</button>
-            </div>
-            <div id="popupBody">
-                Content will be here
-            </div>
-        </div>
+    <div class="zone-controls">
+      <button onclick="fullscreenZone()">Fullscreen</button>
+      <button onclick="aboutBlank()">Open in New Tab</button>
+      <button onclick="downloadZone()">Download</button>
+      <button onclick="closeZone()">Close</button>
     </div>
+  </div>
+  <iframe id="zoneFrame"></iframe>
+</div>
 
-    <ins class="adsbygoogle"
-    style="display:block; text-align:center;"
+<div id="popupOverlay">
+  <div class="popup">
+    <div class="popup-header">
+      <h3 id="popupTitle">Title</h3>
+      <button id="popupClose" onclick="closePopup()">×</button>
+    </div>
+    <div id="popupBody">Content will be here</div>
+  </div>
+</div>
+
+<ins class="adsbygoogle" style="display:block; text-align:center;"
     data-ad-client="ca-pub-5521219086088837"
     data-ad-slot="5549138288"
     data-ad-format="auto"
     data-full-width-responsive="true"></ins>
-   <script>
-    (adsbygoogle = window.adsbygoogle || []).push({});
-   </script>
-    <footer>
-        <div class="footer-links">
-            <a href="#" onclick="loadDMCA(); return false;">DMCA</a>
-            <a href="#" onclick="showContact(); return false;">Contact</a>
-            <a href="#" onclick="loadPrivacy(); return false;">Privacy Policy</a>
-            <a href="javascript:saveData()">Export Data</a>
-            <a href="#" onclick="document.getElementById('importData').click(); return false;">Import Data</a>
-            <input type="file" id="importData" style="display: none;" onchange="loadData(event)">
-        </div>
-    </footer>
-    <script src="script.js"></script>
-    <script>
-        const search = new URLSearchParams(window.location.search);
-        const privacy = search.get('privacy');
-        if (privacy) {
-            loadPrivacy();
-        }
-    </script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+<footer>
+  <div class="footer-links">
+    <a href="#" onclick="loadDMCA(); return false;">DMCA</a>
+    <a href="#" onclick="showContact(); return false;">Contact</a>
+    <a href="#" onclick="loadPrivacy(); return false;">Privacy Policy</a>
+    <a href="javascript:saveData()">Export Data</a>
+    <a href="#" onclick="document.getElementById('importData').click(); return false;">Import Data</a>
+    <input type="file" id="importData" style="display: none;" onchange="loadData(event)">
+  </div>
+</footer>
+
+<script src="script.js"></script>
+<script>
+  const search = new URLSearchParams(window.location.search);
+  const privacy = search.get('privacy');
+  if (privacy) {
+    loadPrivacy();
+  }
+</script>
+
 </body>
 </html>
-
-
-
-
-
-
