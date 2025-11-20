@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Apps - TOS</title>
+<style>
+  body {
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: sans-serif;
+    padding: 20px;
+    text-align: center;
+  }
+  h2 {
+    margin-bottom: 20px;
+  }
+  button {
+    padding: 0.5rem 1rem;
+    border: 2px solid #fff;
+    border-radius: var(--radius);
+    background: transparent;
+    color: #fff;
+    cursor: pointer;
+    box-shadow: 0 0 10px #fff, 0 0 20px #fff inset;
+    margin: 10px;
+    font-size: 1.2rem;
+  }
+  button:hover {
+    background-color: rgba(255,255,255,0.1);
+  }
+  .app-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+</style>
+</head>
+<body>
+
+<h2>Apps</h2>
+<div>
+  <button onclick="window.location.href='index.html'">Back to Home</button>
+</div>
+<div class="app-grid">
+  <button onclick="window.open('https://youtube.com', '_blank')">YouTube</button>
+  <button onclick="window.open('https://spotify.com', '_blank')">Spotify</button>
+  <button onclick="window.open('https://discord.com', '_blank')">Discord</button>
+  <!-- Add more app buttons as needed -->
+</div>
+
+</body>
+</html>
