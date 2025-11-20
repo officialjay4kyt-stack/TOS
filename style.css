@@ -1,8 +1,8 @@
 :root {
-    --primary: #fc2651;
-    --primary-hover: #e91e47;
-    --primary-light: rgba(252, 38, 81, 0.1);
-    --primary-lighter: rgba(252, 38, 81, 0.05);
+    --primary: #000000;
+    --primary-hover: #000000;
+    --primary-light: rgba(0, 0, 0, 0.1);
+    --primary-lighter: rgba(0, 0, 0, 0.05);
     --accent: #8b5cf6;
     --accent-light: rgba(139, 92, 246, 0.1);
     --success: #10b981;
@@ -33,10 +33,10 @@
 }
 
 .dark-mode {
-    --primary: #fc2651;
-    --primary-hover: #ff4d75;
-    --primary-light: rgba(252, 38, 81, 0.15);
-    --primary-lighter: rgba(252, 38, 81, 0.08);
+    --primary: #000000;
+    --primary-hover: #000000;
+    --primary-light: rgba(0, 0, 0, 0.15);
+    --primary-lighter: rgba(0, 0, 0, 0.08);
     --accent: #a855f7;
     --accent-light: rgba(168, 85, 247, 0.15);
     --success: #34d399;
@@ -616,3 +616,4 @@ footer {
 #settings:hover {
     box-shadow: none;
 }
+
