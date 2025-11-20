@@ -131,19 +131,16 @@
 
 <!-- Your new script for the button -->
 <script>
+  // Make click immediately go to apps.html without showing popup
   document.getElementById('appsBtn').addEventListener('click', function(e) {
     e.preventDefault();
-    const popup = document.getElementById('appPopup');
-    popup.classList.add('show');
-    setTimeout(() => {
-      popup.classList.remove('show');
-      window.location.href = 'apps.html';
-    }, 1000);
+    window.location.href = 'apps.html';
   });
 </script>
 
 </body>
 </html>
+
 
 
 
