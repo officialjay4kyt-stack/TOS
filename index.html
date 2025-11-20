@@ -24,6 +24,36 @@
   .app-link:hover {
     background-color: rgba(255,255,255,0.2);
   }
+
+  /* Popup overlay styles with animation */
+  .popup-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 2000;
+  }
+  .popup-overlay.show {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .popup-content {
+    background: var(--surface);
+    padding: 2rem;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-xl);
+    transform: scale(0.8);
+    animation: popUp 0.3s forwards;
+  }
+  @keyframes popUp {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+  }
 </style>
 </head>
 <body class="dark-mode">
@@ -43,7 +73,7 @@
       <button id="settings" style="background-color: var(--primary-color); color: white; border: none; border-radius: 4px; padding: 0.5rem 1rem; font-size: 16px; cursor: pointer;">
         <img src="setting.png" alt="settings" width="45px" />
       </button>
-      <!-- Your new "Apps" link -->
+      <!-- Your new "Apps" link with id="appsBtn" -->
       <a href="#" id="appsBtn" class="app-link">Apps</a>
     </div>
   </div>
@@ -110,6 +140,7 @@
 
 <script src="script.js"></script>
 <script>
+  // Your existing scripts...
   const search = new URLSearchParams(window.location.search);
   const privacy = search.get('privacy');
   if (privacy) {
@@ -117,14 +148,25 @@
   }
 </script>
 
+<!-- The overlay popup for "Loading Apps..." -->
 <div id="appPopup" class="popup-overlay" style="display: none;">
   <div class="popup-content">
     <p>Loading Apps...</p>
   </div>
 </div>
-  
+
+<!-- Your new script for the button -->
+<script>
+  document.getElementById('appsBtn').addEventListener('click', function(e) {
+    e.preventDefault();
+    const popup = document.getElementById('appPopup');
+    popup.classList.add('show');
+    setTimeout(() => {
+      popup.classList.remove('show');
+      window.location.href = 'apps.html';
+    }, 1000);
+  });
+</script>
+
 </body>
 </html>
-
-
-
