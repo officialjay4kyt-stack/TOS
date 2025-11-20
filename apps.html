@@ -3,52 +3,92 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Apps - TOS</title>
+<title>Apps</title>
+<link rel="stylesheet" href="style.css" />
 <style>
+  /* Basic Reset & layout styles */
   body {
-    background-color: var(--bg);
-    color: var(--text);
-    font-family: sans-serif;
+    font-family: 'Arial', sans-serif;
+    background-color: var(--surface);
+    color: #fff;
+    margin: 0;
     padding: 20px;
-    text-align: center;
   }
-  h2 {
+
+  /* Header */
+  header {
+    text-align: center;
     margin-bottom: 20px;
   }
-  button {
-    padding: 0.5rem 1rem;
-    border: 2px solid #fff;
-    border-radius: var(--radius);
-    background: transparent;
-    color: #fff;
-    cursor: pointer;
-    box-shadow: 0 0 10px #fff, 0 0 20px #fff inset;
-    margin: 10px;
-    font-size: 1.2rem;
+
+  header h1 {
+    font-size: 2rem;
+    margin: 0;
   }
-  button:hover {
-    background-color: rgba(255,255,255,0.1);
-  }
-  .app-grid {
+
+  /* Apps grid container */
+  .apps-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 1rem;
-    max-width: 800px;
-    margin: 0 auto;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+  }
+
+  /* Individual app card */
+  .app-card {
+    background-color: #222; /* or your primary color */
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .app-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+  }
+
+  /* App icon/image */
+  .app-icon {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    margin-bottom: 10px;
+  }
+
+  /* App name */
+  .app-name {
+    font-size: 1.2rem;
+    margin: 10px 0 5px;
+  }
+
+  /* App description (optional) */
+  .app-desc {
+    font-size: 0.9rem;
+    color: #ccc;
   }
 </style>
 </head>
 <body>
 
-<h2>Apps</h2>
-<div>
-  <button onclick="window.location.href='index.html'">Back to Home</button>
-</div>
-<div class="app-grid">
-  <button onclick="window.open('https://youtube.com', '_blank')">YouTube</button>
-  <button onclick="window.open('https://spotify.com', '_blank')">Spotify</button>
-  <button onclick="window.open('https://twitch.tv', '_blank')">Twitch</button>
-  <!-- Add more app buttons here -->
+<header>
+  <h1>Our Apps</h1>
+</header>
+
+<div class="apps-grid">
+  <!-- Example app card -->
+  <div class="app-card">
+    <img src="app1.png" alt="App 1" class="app-icon" />
+    <div class="app-name">App One</div>
+    <div class="app-desc">Description of App One</div>
+  </div>
+  <div class="app-card">
+    <img src="app2.png" alt="App 2" class="app-icon" />
+    <div class="app-name">App Two</div>
+    <div class="app-desc">Description of App Two</div>
+  </div>
+  <!-- Add more app cards as needed -->
 </div>
 
 </body>
