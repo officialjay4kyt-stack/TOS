@@ -132,7 +132,7 @@ header {
 
 #searchBar:focus {
     background: var(--text);
-    box-shadow: 0 0 0 3px rgba(252, 38, 81, 0.25), var(--shadow);
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.25), var(--shadow);
     transform: translateY(-1px);
     color: var(--glass);
 }
@@ -290,7 +290,7 @@ main {
 
 .zone-item:hover button {
     color: var(--primary);
-    background: rgba(252, 38, 81, 0.05);
+    background: rgba(255, 255, 255, 0.05);
 }
 
 #zoneViewer {
@@ -491,7 +491,7 @@ main {
 #popupBody input[type="text"]:focus,
 #popupBody input[type="file"]:focus {
     border-color: var(--primary);
-    box-shadow: 0 0 0 3px rgba(252, 38, 81, 0.1);
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.1);
     transform: translateY(-1px);
 }
 
@@ -616,6 +616,7 @@ footer {
 #settings:hover {
     box-shadow: none;
 }
+
 
 
 
