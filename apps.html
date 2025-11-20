@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>TOS</title>
-<!-- Your style.css -->
+<!-- Your existing style.css -->
 <link rel="stylesheet" href="style.css" />
 <style>
 body {
@@ -53,9 +53,10 @@ a.back-link {
   color: #fff;
   text-decoration: underline;
   cursor: pointer;
+  font-weight: 600;
 }
 
-/* Main content styles (like your homepage) */
+/* Main content styles, matching your homepage zones grid */
 main {
   max-width: 1200px;
   margin: 0 auto;
@@ -63,14 +64,15 @@ main {
 h1 {
   font-size: 2rem;
   margin-bottom: 1rem;
+  font-family: 'SF Pro Display', sans-serif;
 }
 #container {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 1.5rem;
 }
 
-/* App cards styling */
+/* App card style matching zone style */
 .app-card {
   background: var(--gradient-surface);
   border: 1px solid var(--border);
@@ -133,14 +135,14 @@ h1 {
     <div class="app-name">App Two</div>
     <div class="app-desc">Description of App Two.</div>
   </div>
-  <!-- Add more apps here -->
+  <!-- Add more apps as needed -->
 </div>
 
 <script>
 function openApp(appName) {
   alert("Open " + appName + " - implement your app logic here.");
-  // Example: redirect to app page
-  // window.location.href = 'app-page.html';
+  // Redirect to app page, e.g.,
+  // window.location.href = 'app.html';
 }
 </script>
 </body>
