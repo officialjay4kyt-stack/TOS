@@ -4,7 +4,6 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>TOS</title>
-<!-- Your style.css variables and styles -->
 <style>
 :root {
     --primary: #000000;
@@ -40,7 +39,6 @@
     --gradient-surface: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
 }
 
-/* Reset body to dark background */
 body {
   margin: 0;
   padding: 0;
@@ -53,7 +51,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Header style matching homepage, connected to top */
 header {
   background: var(--gradient-primary);
   position: sticky;
@@ -62,10 +59,10 @@ header {
   z-index: 999;
   display: flex;
   align-items: center;
-  padding: 1.25rem 1rem; /* exact padding from your homepage */
+  padding: 1.25rem 1rem;
   box-shadow: var(--shadow-lg);
   backdrop-filter: blur(20px);
-  overflow: hidden; /* prevent overflow if icon too big */
+  overflow: hidden; /* prevent overflow */
 }
 .header-content {
   display: flex;
@@ -75,7 +72,6 @@ header {
   gap: 1.5rem;
 }
 
-/* "TOS" logo style, matching your homepage */
 .logo {
   font-size: 1.75rem;
   font-weight: 800;
@@ -84,13 +80,12 @@ header {
   -webkit-text-fill-color: transparent;
 }
 
-/* "Games" button with glow, same style as homepage */
 a.back-link {
   display: flex;
   align-items: center;
   gap: 0.5rem;
   font-size: 1rem;
-  padding: 0.5rem 1rem; /* same as your homepage button */
+  padding: 0.5rem 1rem;
   background-color: var(--primary);
   color: #fff;
   border-radius: var(--radius-lg);
@@ -98,26 +93,25 @@ a.back-link {
   text-decoration: none;
   font-weight: 600;
   transition: all 0.3s;
-  height: 100%; /* ensure it fits vertically */
+  /* Removed height: 100%; to avoid height issues */
   box-sizing: border-box;
 }
 a.back-link img {
-  width: 20px; /* Reduced size for fit */
+  width: 20px; /* smaller icon size to prevent overflow */
   height: 20px;
-  flex-shrink: 0;
+  flex-shrink: 0; /* prevent shrinking */
+  max-width: 20px;
+  max-height: 20px;
 }
 a.back-link:hover {
   background-color: rgba(255,255,255,0.2);
 }
 
-/* Main page styles: grid of apps */
 main {
   max-width: 1200px;
   margin: 2rem auto;
   padding: 0 1rem;
 }
-
-/* Page Heading */
 h1 {
   font-size: 2rem;
   margin-bottom: 1.5rem;
@@ -125,14 +119,12 @@ h1 {
   font-family: 'SF Pro Display', sans-serif;
 }
 
-/* Apps grid style, matching your homepage zones grid */
 #container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 1.5rem;
 }
 
-/* App card style, matching zone hover effect */
 .app-card {
   background: var(--gradient-surface);
   border: 1px solid var(--border);
@@ -174,7 +166,7 @@ h1 {
   <div class="header-content">
     <div class="logo">TOS</div>
     <a href="index.html" class="back-link">
-      <!-- Reduced icon size to prevent overflow -->
+      <!-- Smaller icon to prevent overflow -->
       <img src="games-icon.png" alt="Games" style="width:20px; height:20px;" />
       Games
     </a>
@@ -195,15 +187,12 @@ h1 {
       <div class="app-name">App Two</div>
       <div class="app-desc">Description of App Two.</div>
     </div>
-    <!-- Add more app cards as needed -->
   </div>
 </main>
 
 <script>
 function openApp(name) {
   alert("Open " + name);
-  // Implement your app logic here, e.g., redirect
-  // window.location.href = 'app.html';
 }
 </script>
 </body>
