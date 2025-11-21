@@ -89,7 +89,7 @@ a.back-link {
   align-items: center;
   gap: 0.5rem;
   font-size: 1rem;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 1rem; /* same as your homepage button */
   background-color: var(--primary);
   color: #fff;
   border-radius: var(--radius-lg);
@@ -97,6 +97,14 @@ a.back-link {
   text-decoration: none;
   font-weight: 600;
   transition: all 0.3s;
+  height: 100%; /* ensure it fits vertically */
+  box-sizing: border-box;
+}
+a.back-link img {
+  width: 24px;
+  height: 24px;
+  /* keep the icon size consistent */
+  flex-shrink: 0;
 }
 a.back-link:hover {
   background-color: rgba(255,255,255,0.2);
