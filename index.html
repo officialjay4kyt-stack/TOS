@@ -5,11 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>TOS</title>
 <!-- Your existing head content... -->
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css" />
 <style>
   /* Your existing styles... */
 
-  /* Add this at the end of your style block for the "Apps" link button: */
+  /* Style for the "Apps" button */
   .app-link {
     display: inline-block;
     padding: 0.5rem 1rem;
@@ -20,13 +20,19 @@
     text-decoration: none;
     cursor: pointer;
     box-shadow: 0 0 10px #fff, 0 0 20px #fff inset;
-  }
-  .app-link:hover {
-    background-color: rgba(255,255,255,0.2);
+    transition: transform 0.2s ease; /* smooth scaling transition */
   }
 
-
+  /* Pop effect on hover */
+  #appsBtn:hover {
+    transform: scale(1.2);
+    z-index: 10;
   }
+  
+  /* Optional: Keep existing styles, add more as needed */
+
+  /* Style for the hover popup message if wanted (optional) */
+  /* Not necessary for the scale effect only */
 </style>
 </head>
 <body class="dark-mode">
@@ -35,7 +41,7 @@
   <div class="header-content">
     <div class="logo">TOS</div>
     <div class="search-container">
-      <input type="text" id="searchBar" placeholder="Type Inside Me 👉 👈..." oninput="filterZones()">
+      <input type="text" id="searchBar" placeholder="Type Inside Me 👉 👈..." oninput="filterZones()" />
       <select id="sortOptions" onchange="sortZones()">
         <option value="name">Name</option>
         <option value="id">Release</option>
@@ -46,7 +52,8 @@
       <button id="settings" style="background-color: var(--primary-color); color: white; border: none; border-radius: 4px; padding: 0.5rem 1rem; font-size: 16px; cursor: pointer;">
         <img src="setting.png" alt="settings" width="45px" />
       </button>
-      <!-- Your new "Apps" link with id="appsBtn" -->
+      
+      <!-- Apps button with pop effect -->
       <a href="#" id="appsBtn" class="app-link">Apps</a>
     </div>
   </div>
@@ -57,13 +64,13 @@
     <summary id="allZonesSummary" style="font-size: 1.2rem; font-weight: bold; cursor: pointer;">Featured Zones</summary>
     <div id="featuredZones" class="zone-container"></div>
   </details>
-  <br><hr><br>
+  <br /><hr /><br />
   <details id="allZonesWrapper" open>
     <summary id="allSummary" style="font-size: 1.2rem; font-weight: bold; cursor: pointer;">All Zones</summary>
     <div id="container">Loading...</div>
   </details>
 </main>
-  
+
 <div id="zoneViewer">
   <div class="zone-header">
     <div class="zone-title">
@@ -91,6 +98,7 @@
   </div>
 </div>
 
+<!-- Ads -->
 <ins class="adsbygoogle" style="display:block; text-align:center;"
     data-ad-client="ca-pub-5521219086088837"
     data-ad-slot="5549138288"
@@ -100,6 +108,7 @@
   (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
 
+<!-- Footer -->
 <footer>
   <div class="footer-links">
     <a href="#" onclick="loadDMCA(); return false;">DMCA</a>
@@ -107,13 +116,13 @@
     <a href="#" onclick="loadPrivacy(); return false;">Privacy Policy</a>
     <a href="javascript:saveData()">Export Data</a>
     <a href="#" onclick="document.getElementById('importData').click(); return false;">Import Data</a>
-    <input type="file" id="importData" style="display: none;" onchange="loadData(event)">
+    <input type="file" id="importData" style="display: none;" onchange="loadData(event)" />
   </div>
 </footer>
 
 <script src="script.js"></script>
 <script>
-  // Your existing scripts...
+  // Existing scripts...
   const search = new URLSearchParams(window.location.search);
   const privacy = search.get('privacy');
   if (privacy) {
@@ -121,21 +130,10 @@
   }
 </script>
 
-  
-<!-- The overlay popup for "Loading Apps..." -->
-<div id="appPopup" class="popup-overlay" style="display: none;">
-  <div class="popup-content">
-    <p>Loading Apps...</p>
-  </div>
-</div>
-
-<!-- Your new script for the button -->
+<!-- Optional: your existing script for the button click -->
 <script>
-  // Make click immediately go to apps.html without showing popup
-  document.getElementById('appsBtn').addEventListener('click', function(e) {
-    e.preventDefault();
-    window.location.href = 'apps.html';
-  });
+  // You can remove or keep your existing click script
+  // For hover pop, no script needed
 </script>
 
 </body>
