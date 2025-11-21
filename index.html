@@ -5,64 +5,133 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>TOS</title>
 <!-- Your existing head content... -->
+<link rel="stylesheet" href="style.css">
 <style>
   /* Your existing styles... */
 
-  /* Make sure the "Apps" button has transition for pop effect */
-  #appsBtn {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
+  /* Add this at the end of your style block for the "Apps" link button: */
+  .app-link {
+    display: inline-block;
     padding: 0.5rem 1rem;
     background-color: var(--primary-color);
     color: white;
     border-radius: 4px;
-    box-shadow: 0 0 10px #fff, inset 0 0 20px #fff;
     font-size: 16px;
     text-decoration: none;
     cursor: pointer;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 0 10px #fff, 0 0 20px #fff inset;
   }
-  #appsBtn img {
-    width: 20px;
-    height: 20px;
-  }
-
-  /* When hovering over "Apps", pop it out */
-  #appsBtn:hover {
-    transform: translateY(-5px) scale(1.1);
-    box-shadow: 0 0 20px #fff, inset 0 0 30px #fff;
+  .app-link:hover {
+    background-color: rgba(255,255,255,0.2);
   }
 
-  /* When "Apps" is hovered, slide the "Settings" button to the left */
-  #appsBtn:hover ~ #settings {
-    transform: translateX(-10px);
+
   }
 </style>
 </head>
 <body class="dark-mode">
 
 <header>
-  <div class="header-content" style="display:flex; align-items:center; justify-content:space-between; width:100%; padding:1rem;">
+  <div class="header-content">
     <div class="logo">TOS</div>
-    <div style="display:flex; align-items:center; gap:1rem;">
-      <!-- "Settings" button -->
-      <button id="settings" style="background-color: var(--primary-color); color: white; border: none; border-radius: 4px; padding: 0.5rem 1rem; font-size: 16px;">
+    <div class="search-container">
+      <input type="text" id="searchBar" placeholder="Type Inside Me 👉 👈..." oninput="filterZones()">
+      <select id="sortOptions" onchange="sortZones()">
+        <option value="name">Name</option>
+        <option value="id">Release</option>
+        <option value="popular">Popular</option>
+      </select>
+    </div>
+    <div class="control-buttons">
+      <button id="settings" style="background-color: var(--primary-color); color: white; border: none; border-radius: 4px; padding: 0.5rem 1rem; font-size: 16px; cursor: pointer;">
         <img src="setting.png" alt="settings" width="45px" />
       </button>
-      <!-- "Apps" button -->
-      <a href="#" id="appsBtn" class="app-link">
-        <img src="games-icon.png" alt="Games" />
-        Apps
-      </a>
+      <!-- Your new "Apps" link with id="appsBtn" -->
+      <a href="#" id="appsBtn" class="app-link">Apps</a>
     </div>
   </div>
 </header>
 
-<!-- Rest of your page content remains unchanged -->
+<main>
+  <details id="featuredZonesWrapper" open>
+    <summary id="allZonesSummary" style="font-size: 1.2rem; font-weight: bold; cursor: pointer;">Featured Zones</summary>
+    <div id="featuredZones" class="zone-container"></div>
+  </details>
+  <br><hr><br>
+  <details id="allZonesWrapper" open>
+    <summary id="allSummary" style="font-size: 1.2rem; font-weight: bold; cursor: pointer;">All Zones</summary>
+    <div id="container">Loading...</div>
+  </details>
+</main>
+  
+<div id="zoneViewer">
+  <div class="zone-header">
+    <div class="zone-title">
+      <h2 id="zoneName">zone</h2>
+      <span id="zoneId" style="display: none;"></span>
+      <a id="zoneAuthor" href="#" target="_blank">by Author</a>
+    </div>
+    <div class="zone-controls">
+      <button onclick="fullscreenZone()">Fullscreen</button>
+      <button onclick="aboutBlank()">Open in New Tab</button>
+      <button onclick="downloadZone()">Download</button>
+      <button onclick="closeZone()">Close</button>
+    </div>
+  </div>
+  <iframe id="zoneFrame"></iframe>
+</div>
 
+<div id="popupOverlay">
+  <div class="popup">
+    <div class="popup-header">
+      <h3 id="popupTitle">Title</h3>
+      <button id="popupClose" onclick="closePopup()">×</button>
+    </div>
+    <div id="popupBody">Content will be here</div>
+  </div>
+</div>
+
+<ins class="adsbygoogle" style="display:block; text-align:center;"
+    data-ad-client="ca-pub-5521219086088837"
+    data-ad-slot="5549138288"
+    data-ad-format="auto"
+    data-full-width-responsive="true"></ins>
 <script>
-  // Keep your existing scripts...
+  (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+<footer>
+  <div class="footer-links">
+    <a href="#" onclick="loadDMCA(); return false;">DMCA</a>
+    <a href="#" onclick="showContact(); return false;">Contact</a>
+    <a href="#" onclick="loadPrivacy(); return false;">Privacy Policy</a>
+    <a href="javascript:saveData()">Export Data</a>
+    <a href="#" onclick="document.getElementById('importData').click(); return false;">Import Data</a>
+    <input type="file" id="importData" style="display: none;" onchange="loadData(event)">
+  </div>
+</footer>
+
+<script src="script.js"></script>
+<script>
+  // Your existing scripts...
+  const search = new URLSearchParams(window.location.search);
+  const privacy = search.get('privacy');
+  if (privacy) {
+    loadPrivacy();
+  }
+</script>
+
+  
+<!-- The overlay popup for "Loading Apps..." -->
+<div id="appPopup" class="popup-overlay" style="display: none;">
+  <div class="popup-content">
+    <p>Loading Apps...</p>
+  </div>
+</div>
+
+<!-- Your new script for the button -->
+<script>
+  // Make click immediately go to apps.html without showing popup
   document.getElementById('appsBtn').addEventListener('click', function(e) {
     e.preventDefault();
     window.location.href = 'apps.html';
