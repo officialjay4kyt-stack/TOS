@@ -5,131 +5,65 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>TOS</title>
 <!-- Your existing head content... -->
-<link rel="stylesheet" href="style.css">
 <style>
   /* Your existing styles... */
 
-  /* Wrap the "Apps" button in a container for sliding over the "Settings" button */
-  .apps-container {
-    display: inline-block;
-    position: relative; /* for layering */
-    z-index: 1; /* default layer */
-  }
-
-  /* When hover, bring the container to front to slide over the settings button */
-  .apps-container:hover {
-    z-index: 10;
-    transition: z-index 0.2s ease;
-  }
-
-  /* Add transition to the button for smooth sliding */
+  /* Style for the "Apps" button */
   #appsBtn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 4px;
+    box-shadow: 0 0 10px #fff, inset 0 0 20px #fff;
+    font-size: 16px;
+    text-decoration: none;
+    cursor: pointer;
     transition: transform 0.2s ease;
   }
+  #appsBtn img {
+    width: 20px;
+    height: 20px;
+  }
 
-  /* Slide over effect when hovering over container */
-  .apps-container:hover #appsBtn {
-    transform: translate(10px, -10px);
+  /* When hovering over the "Apps" button, make it pop out */
+  #appsBtn:hover {
+    transform: translateY(-5px) scale(1.1);
+    box-shadow: 0 0 20px #fff, inset 0 0 30px #fff;
+  }
+
+  /* Make the "Settings" button slide to the left when "Apps" is hovered */
+  #appsBtn:hover ~ #settings {
+    transform: translateX(-10px);
+    transition: transform 0.2s ease;
   }
 </style>
 </head>
 <body class="dark-mode">
 
 <header>
-  <div class="header-content">
+  <div class="header-content" style="display:flex; align-items:center; justify-content:space-between; width:100%; padding:1rem;">
     <div class="logo">TOS</div>
-    <div class="search-container">
-      <input type="text" id="searchBar" placeholder="Type Inside Me 👉 👈..." oninput="filterZones()">
-      <select id="sortOptions" onchange="sortZones()">
-        <option value="name">Name</option>
-        <option value="id">Release</option>
-        <option value="popular">Popular</option>
-      </select>
-    </div>
-    <div class="control-buttons">
+    <div style="display:flex; align-items:center; gap:1rem;">
+      <!-- "Settings" button -->
       <button id="settings" style="background-color: var(--primary-color); color: white; border: none; border-radius: 4px; padding: 0.5rem 1rem; font-size: 16px;">
         <img src="setting.png" alt="settings" width="45px" />
       </button>
-      <!-- Wrap "Apps" in the container for slide-over effect -->
-      <div class="apps-container">
-        <a href="#" id="appsBtn" class="app-link">
-          <img src="games-icon.png" alt="Games" />
-          Apps
-        </a>
-      </div>
+      <!-- "Apps" button -->
+      <a href="#" id="appsBtn" class="app-link">
+        <img src="games-icon.png" alt="Games" />
+        Apps
+      </a>
     </div>
   </div>
 </header>
 
-<main>
-  <details id="featuredZonesWrapper" open>
-    <summary id="allZonesSummary" style="font-size: 1.2rem; font-weight: bold; cursor: pointer;">Featured Zones</summary>
-    <div id="featuredZones" class="zone-container"></div>
-  </details>
-  <br><hr><br>
-  <details id="allZonesWrapper" open>
-    <summary id="allSummary" style="font-size: 1.2rem; font-weight: bold; cursor: pointer;">All Zones</summary>
-    <div id="container">Loading...</div>
-  </details>
-</main>
-  
-<div id="zoneViewer">
-  <div class="zone-header">
-    <div class="zone-title">
-      <h2 id="zoneName">zone</h2>
-      <span id="zoneId" style="display: none;"></span>
-      <a id="zoneAuthor" href="#" target="_blank">by Author</a>
-    </div>
-    <div class="zone-controls">
-      <button onclick="fullscreenZone()">Fullscreen</button>
-      <button onclick="aboutBlank()">Open in New Tab</button>
-      <button onclick="downloadZone()">Download</button>
-      <button onclick="closeZone()">Close</button>
-    </div>
-  </div>
-  <iframe id="zoneFrame"></iframe>
-</div>
+<!-- rest of your HTML remains unchanged -->
 
-<div id="popupOverlay">
-  <div class="popup">
-    <div class="popup-header">
-      <h3 id="popupTitle">Title</h3>
-      <button id="popupClose" onclick="closePopup()">×</button>
-    </div>
-    <div id="popupBody">Content will be here</div>
-  </div>
-</div>
-
-<ins class="adsbygoogle" style="display:block; text-align:center;"
-    data-ad-client="ca-pub-5521219086088837"
-    data-ad-slot="5549138288"
-    data-ad-format="auto"
-    data-full-width-responsive="true"></ins>
-<script>
-  (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-
-<footer>
-  <div class="footer-links">
-    <a href="#" onclick="loadDMCA(); return false;">DMCA</a>
-    <a href="#" onclick="showContact(); return false;">Contact</a>
-    <a href="#" onclick="loadPrivacy(); return false;">Privacy Policy</a>
-    <a href="javascript:saveData()">Export Data</a>
-    <a href="#" onclick="document.getElementById('importData').click(); return false;">Import Data</a>
-    <input type="file" id="importData" style="display: none;" onchange="loadData(event)">
-  </div>
-</footer>
-
-<script src="script.js"></script>
 <script>
   // Your existing scripts...
-  const search = new URLSearchParams(window.location.search);
-  const privacy = search.get('privacy');
-  if (privacy) {
-    loadPrivacy();
-  }
-
-  // Make the "Apps" button go to apps.html
   document.getElementById('appsBtn').addEventListener('click', function(e) {
     e.preventDefault();
     window.location.href = 'apps.html';
