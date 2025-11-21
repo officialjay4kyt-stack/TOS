@@ -614,10 +614,11 @@ function loadDMCA() {
     const popupBody = document.getElementById('popupBody');
     popupBody.innerHTML = `
         <div class="Credit">
-            <p>
-                Jordan 
-                Mr Pryans"
+            <p>Jordan
+            <p>Mr Pryans
+            <ul>
         </div>
+        
     `;
     popupBody.contentEditable = false;
     document.getElementById('popupOverlay').style.display = "flex";
