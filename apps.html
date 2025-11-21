@@ -65,6 +65,7 @@ header {
   padding: 1.25rem 1rem; /* exact padding from your homepage */
   box-shadow: var(--shadow-lg);
   backdrop-filter: blur(20px);
+  overflow: hidden; /* prevent overflow if icon too big */
 }
 .header-content {
   display: flex;
@@ -99,10 +100,11 @@ a.back-link {
   transition: all 0.3s;
   height: 100%; /* ensure it fits vertically */
   box-sizing: border-box;
-
+}
 a.back-link img {
-  width: 20px;
+  width: 20px; /* Reduced size for fit */
   height: 20px;
+  flex-shrink: 0;
 }
 a.back-link:hover {
   background-color: rgba(255,255,255,0.2);
@@ -172,7 +174,8 @@ h1 {
   <div class="header-content">
     <div class="logo">TOS</div>
     <a href="index.html" class="back-link">
-      <img src="games-icon.png" alt="Games" style="width:24px; height:24px;" />
+      <!-- Reduced icon size to prevent overflow -->
+      <img src="games-icon.png" alt="Games" style="width:20px; height:20px;" />
       Games
     </a>
   </div>
