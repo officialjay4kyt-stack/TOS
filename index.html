@@ -4,167 +4,61 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>TOS</title>
+<!-- Your existing head content... -->
+<link rel="stylesheet" href="style.css" />
 <style>
-  :root {
-    --primary: #000000;
-    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.6);
-    --radius-lg: 16px;
-    --gradient-primary: linear-gradient(135deg, #000, #000);
-  }
+  /* Your existing styles... */
 
-  body {
-    margin: 0;
-    padding: 0;
-    background-color: #0f172a;
-    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', system-ui, sans-serif;
-    color: #f1f5f9;
-  }
-
-  header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1.25rem 1rem;
-    background: var(--gradient-primary);
-    position: sticky;
-    top: 0;
-    width: 100%;
-    box-shadow: var(--shadow-lg);
-    backdrop-filter: blur(20px);
-    box-sizing: border-box;
-  }
-
-  .header-left {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    min-width: 0;
-  }
-
-  .header-right {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-  }
-
-  .logo {
-    font-size: 1.75rem;
-    font-weight: 800;
-    background: linear-gradient(135deg, #fff, rgba(255,255,255,0.8));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-
-  /* Style for the "Games" button shape and hover pop effect */
+  /* Style for the "Apps" button to match "Games" button's shape and pop effect */
   #appsBtn {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
+    display: inline-block;
     padding: 0.5rem 1rem;
-    background-color: var(--primary);
-    color: #fff;
-    border-radius: var(--radius-lg);
-    box-shadow: 0 0 10px #fff, inset 0 0 20px #fff;
-    font-weight: 600;
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 4px; /* same as your button border radius */
+    box-shadow: 0 0 10px #fff, 0 0 20px #fff inset; /* same shadow as "Games" button */
+    font-size: 16px;
     text-decoration: none;
-    font-size: 1rem;
     cursor: pointer;
-
     transition: transform 0.2s ease, box-shadow 0.2s ease;
   }
 
-  /* Hover pop effect for the button */
   #appsBtn:hover {
-    transform: translateY(-5px) scale(1.1);
-    box-shadow: 0 0 20px #fff, inset 0 0 30px #fff;
-  }
-
-  /* Optional: icon inside the button */
-  #appsBtn img {
-    width: 20px;
-    height: 20px;
-  }
-
-  /* Styles for app cards if needed */
-  #container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1.5rem;
-  }
-
-  .app-card {
-    background: linear-gradient(135deg, #222, #111);
-    border: 1px solid #444;
-    border-radius: var(--radius-lg);
-    padding: 15px;
-    cursor: pointer;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    box-shadow: var(--shadow-lg);
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  .app-card:hover {
-    transform: translateY(-8px) scale(1.02);
-    box-shadow: var(--shadow-lg);
-    border-color: var(--primary);
-  }
-
-  .app-icon {
-    width: 80px;
-    height: 80px;
-    object-fit: contain;
-    margin-bottom: 10px;
-  }
-
-  .app-name {
-    font-size: 1.2rem;
-    font-weight: 600;
-    margin-top: 10px;
-  }
-
-  .app-desc {
-    font-size: 0.9rem;
-    color: #ccc;
-    margin-top: 5px;
-    text-align: center;
+    transform: scale(1.2);
+    z-index: 10;
+    box-shadow: 0 0 20px #fff, 0 0 30px #fff inset;
   }
 </style>
 </head>
-<body>
+<body class="dark-mode">
 
 <header>
-  <div class="header-left">
+  <div class="header-content">
     <div class="logo">TOS</div>
-  </div>
-  <div class="header-right">
-    <!-- Style the "Apps" button like the "Games" button -->
-    <a href="apps.html" id="appsBtn" class="app-link">Apps</a>
+    <div class="search-container">
+      <input type="text" id="searchBar" placeholder="Type Inside Me 👉 👈..." oninput="filterZones()" />
+      <select id="sortOptions" onchange="sortZones()">
+        <option value="name">Name</option>
+        <option value="id">Release</option>
+        <option value="popular">Popular</option>
+      </select>
+    </div>
+    <div class="control-buttons">
+      <button id="settings" style="background-color: var(--primary-color); color: white; border: none; border-radius: 4px; padding: 0.5rem 1rem; font-size: 16px; cursor: pointer;">
+        <img src="setting.png" alt="settings" width="45px" />
+      </button>
+      
+      <!-- Style the "Apps" link like the "Games" button -->
+      <a href="apps.html" id="appsBtn" class="app-link">Apps</a>
+    </div>
   </div>
 </header>
 
-<main>
-  <h1>Apps</h1>
-  <!-- Sample app cards -->
-  <div id="container">
-    <div class="app-card" onclick="alert('Open App 1')">
-      <img src="app1.png" alt="App 1" class="app-icon" />
-      <div class="app-name">App One</div>
-      <div class="app-desc">Description of App One.</div>
-    </div>
-    <div class="app-card" onclick="alert('Open App 2')">
-      <img src="app2.png" alt="App 2" class="app-icon" />
-      <div class="app-name">App Two</div>
-      <div class="app-desc">Description of App Two.</div>
-    </div>
-  </div>
-</main>
+<!-- Rest of your page content -->
 
-<!-- You can add scripts here if needed -->
+<!-- Your scripts... -->
 <script>
-  // Example: you can add JavaScript functions if necessary
+  // Your existing scripts...
 </script>
-
 </body>
 </html>
