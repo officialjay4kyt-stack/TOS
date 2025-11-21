@@ -544,7 +544,7 @@ function cloakIcon(url) {
 }
 function cloakName(string) {
     if ((string+"").trim().length === 0) {
-        document.title = "gn-math";
+        document.title = "TOS";
         return;
     }
     document.title = string;
@@ -616,7 +616,6 @@ function loadDMCA() {
         <div class="Credit">
             <p>Jordan
             <p>Mr Pryans
-            <ul>
         </div>   
     `;
     popupBody.contentEditable = false;
@@ -656,5 +655,6 @@ XMLHttpRequest.prototype.open = function (method, url) {
 HTMLCanvasElement.prototype.toDataURL = function (...args) {
     return "";
 };
+
 
 
