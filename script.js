@@ -608,7 +608,7 @@ function loadPrivacy() {
     document.getElementById('popupOverlay').style.display = "flex";
 }
 
-function loadDMCA() {
+function loadCredits() {
     document.getElementById('popupTitle').textContent = "Credit";
     const popupBody = document.getElementById('popupBody');
     popupBody.innerHTML = `
@@ -654,6 +654,7 @@ XMLHttpRequest.prototype.open = function (method, url) {
 HTMLCanvasElement.prototype.toDataURL = function (...args) {
     return "";
 };
+
 
 
 
