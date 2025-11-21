@@ -10,6 +10,10 @@
     --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.6);
     --radius-lg: 16px;
     --gradient-primary: linear-gradient(135deg, #000, #000);
+    --gradient-surface: linear-gradient(135deg, #222, #111);
+    --border: #444;
+    --shadow-sm: 0 2px 4px rgba(0,0,0,0.3);
+    --shadow-xl: 0 8px 20px rgba(0,0,0,0.5);
   }
 
   body {
@@ -38,13 +42,6 @@
     display: flex;
     align-items: center;
     gap: 1rem;
-    min-width: 0;
-  }
-
-  .header-right {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
   }
 
   .logo {
@@ -55,7 +52,13 @@
     -webkit-text-fill-color: transparent;
   }
 
-  /* Style for the Games button with pop animation */
+  .header-right {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  /* Style for the "Games" button with pop animation and bold text */
   #gamesBtn {
     display: flex;
     align-items: center;
@@ -65,12 +68,10 @@
     color: #fff;
     border-radius: var(--radius-lg);
     box-shadow: 0 0 10px #fff, inset 0 0 20px #fff;
-    font-weight: 600;
+    font-weight: bold; /* make text bold */
     text-decoration: none;
     font-size: 1rem;
     cursor: pointer;
-
-    /* Add transition for pop effect */
     transition: transform 0.2s ease, box-shadow 0.2s ease;
   }
 
@@ -86,7 +87,7 @@
     flex-shrink: 0;
   }
 
-  /* Rest styles... (app grid, etc.) */
+  /* Rest styles for layout and app cards */
   main {
     max-width: 1200px;
     margin: 2rem auto;
@@ -152,11 +153,11 @@
   <div class="header-left">
     <div class="logo">TOS</div>
   </div>
-  <div class="header-right">
-    <!-- The button with pop-up animation on hover -->
+  <div class="header-right" style="display:flex; align-items:center; gap:1rem;">
+    <!-- The "Games" button with pop animation and bold text -->
     <a href="index.html" id="gamesBtn" class="app-link">
       <img src="games-icon.png" alt="Games" />
-      Games
+      <strong>Games</strong>
     </a>
   </div>
 </header>
