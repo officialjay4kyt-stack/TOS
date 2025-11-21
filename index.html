@@ -4,136 +4,166 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>TOS</title>
-<!-- Your existing head content... -->
-<link rel="stylesheet" href="style.css" />
 <style>
-  /* Your existing styles... */
+  :root {
+    --primary: #000000;
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.6);
+    --radius-lg: 16px;
+    --gradient-primary: linear-gradient(135deg, #000, #000);
+  }
 
-  /* Style for the "Apps" button */
-  .app-link {
-    display: inline-block;
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: #0f172a;
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', system-ui, sans-serif;
+    color: #f1f5f9;
+  }
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 1rem;
+    background: var(--gradient-primary);
+    position: sticky;
+    top: 0;
+    width: 100%;
+    box-shadow: var(--shadow-lg);
+    backdrop-filter: blur(20px);
+    box-sizing: border-box;
+  }
+
+  .header-left {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    min-width: 0;
+  }
+
+  .header-right {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .logo {
+    font-size: 1.75rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #fff, rgba(255,255,255,0.8));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* Style for the "Games" button shape and hover pop effect */
+  #appsBtn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
     padding: 0.5rem 1rem;
-    background-color: var(--primary-color);
-    color: white;
-    border-radius: 4px;
-    font-size: 16px;
+    background-color: var(--primary);
+    color: #fff;
+    border-radius: var(--radius-lg);
+    box-shadow: 0 0 10px #fff, inset 0 0 20px #fff;
+    font-weight: 600;
     text-decoration: none;
+    font-size: 1rem;
     cursor: pointer;
-    box-shadow: 0 0 10px #fff, 0 0 20px #fff inset;
-    transition: transform 0.2s ease; /* smooth scaling transition */
+
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
   }
 
-  /* Pop effect on hover */
+  /* Hover pop effect for the button */
   #appsBtn:hover {
-    transform: scale(1.2);
-    z-index: 10;
+    transform: translateY(-5px) scale(1.1);
+    box-shadow: 0 0 20px #fff, inset 0 0 30px #fff;
   }
-  
-  /* Optional: Keep existing styles, add more as needed */
 
-  /* Style for the hover popup message if wanted (optional) */
-  /* Not necessary for the scale effect only */
+  /* Optional: icon inside the button */
+  #appsBtn img {
+    width: 20px;
+    height: 20px;
+  }
+
+  /* Styles for app cards if needed */
+  #container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .app-card {
+    background: linear-gradient(135deg, #222, #111);
+    border: 1px solid #444;
+    border-radius: var(--radius-lg);
+    padding: 15px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: var(--shadow-lg);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .app-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--primary);
+  }
+
+  .app-icon {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    margin-bottom: 10px;
+  }
+
+  .app-name {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-top: 10px;
+  }
+
+  .app-desc {
+    font-size: 0.9rem;
+    color: #ccc;
+    margin-top: 5px;
+    text-align: center;
+  }
 </style>
 </head>
-<body class="dark-mode">
+<body>
 
 <header>
-  <div class="header-content">
+  <div class="header-left">
     <div class="logo">TOS</div>
-    <div class="search-container">
-      <input type="text" id="searchBar" placeholder="Type Inside Me 👉 👈..." oninput="filterZones()" />
-      <select id="sortOptions" onchange="sortZones()">
-        <option value="name">Name</option>
-        <option value="id">Release</option>
-        <option value="popular">Popular</option>
-      </select>
-    </div>
-    <div class="control-buttons">
-      <button id="settings" style="background-color: var(--primary-color); color: white; border: none; border-radius: 4px; padding: 0.5rem 1rem; font-size: 16px; cursor: pointer;">
-        <img src="setting.png" alt="settings" width="45px" />
-      </button>
-      
-      <!-- Apps button with pop effect -->
-      <a href="#" id="appsBtn" class="app-link">Apps</a>
-    </div>
+  </div>
+  <div class="header-right">
+    <!-- Style the "Apps" button like the "Games" button -->
+    <a href="apps.html" id="appsBtn" class="app-link">Apps</a>
   </div>
 </header>
 
 <main>
-  <details id="featuredZonesWrapper" open>
-    <summary id="allZonesSummary" style="font-size: 1.2rem; font-weight: bold; cursor: pointer;">Featured Zones</summary>
-    <div id="featuredZones" class="zone-container"></div>
-  </details>
-  <br /><hr /><br />
-  <details id="allZonesWrapper" open>
-    <summary id="allSummary" style="font-size: 1.2rem; font-weight: bold; cursor: pointer;">All Zones</summary>
-    <div id="container">Loading...</div>
-  </details>
+  <h1>Apps</h1>
+  <!-- Sample app cards -->
+  <div id="container">
+    <div class="app-card" onclick="alert('Open App 1')">
+      <img src="app1.png" alt="App 1" class="app-icon" />
+      <div class="app-name">App One</div>
+      <div class="app-desc">Description of App One.</div>
+    </div>
+    <div class="app-card" onclick="alert('Open App 2')">
+      <img src="app2.png" alt="App 2" class="app-icon" />
+      <div class="app-name">App Two</div>
+      <div class="app-desc">Description of App Two.</div>
+    </div>
+  </div>
 </main>
 
-<div id="zoneViewer">
-  <div class="zone-header">
-    <div class="zone-title">
-      <h2 id="zoneName">zone</h2>
-      <span id="zoneId" style="display: none;"></span>
-      <a id="zoneAuthor" href="#" target="_blank">by Author</a>
-    </div>
-    <div class="zone-controls">
-      <button onclick="fullscreenZone()">Fullscreen</button>
-      <button onclick="aboutBlank()">Open in New Tab</button>
-      <button onclick="downloadZone()">Download</button>
-      <button onclick="closeZone()">Close</button>
-    </div>
-  </div>
-  <iframe id="zoneFrame"></iframe>
-</div>
-
-<div id="popupOverlay">
-  <div class="popup">
-    <div class="popup-header">
-      <h3 id="popupTitle">Title</h3>
-      <button id="popupClose" onclick="closePopup()">×</button>
-    </div>
-    <div id="popupBody">Content will be here</div>
-  </div>
-</div>
-
-<!-- Ads -->
-<ins class="adsbygoogle" style="display:block; text-align:center;"
-    data-ad-client="ca-pub-5521219086088837"
-    data-ad-slot="5549138288"
-    data-ad-format="auto"
-    data-full-width-responsive="true"></ins>
+<!-- You can add scripts here if needed -->
 <script>
-  (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-
-<!-- Footer -->
-<footer>
-  <div class="footer-links">
-    <a href="#" onclick="loadDMCA(); return false;">DMCA</a>
-    <a href="#" onclick="showContact(); return false;">Contact</a>
-    <a href="#" onclick="loadPrivacy(); return false;">Privacy Policy</a>
-    <a href="javascript:saveData()">Export Data</a>
-    <a href="#" onclick="document.getElementById('importData').click(); return false;">Import Data</a>
-    <input type="file" id="importData" style="display: none;" onchange="loadData(event)" />
-  </div>
-</footer>
-
-<script src="script.js"></script>
-<script>
-  // Existing scripts...
-  const search = new URLSearchParams(window.location.search);
-  const privacy = search.get('privacy');
-  if (privacy) {
-    loadPrivacy();
-  }
-</script>
-
-<!-- Optional: your existing script for the button click -->
-<script>
-  // You can remove or keep your existing click script
-  // For hover pop, no script needed
+  // Example: you can add JavaScript functions if necessary
 </script>
 
 </body>
