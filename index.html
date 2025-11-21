@@ -8,7 +8,8 @@
 <style>
   /* Your existing styles... */
 
-  /* Style for the "Apps" link to match the "Games" button with hover pop-up animation */
+  /* Add this at the end of your style block for the "Apps" link button: */
+  /* Style to make "Apps" look like the "Games" button with pop animation */
   .app-link {
     display: flex;
     align-items: center;
@@ -17,11 +18,12 @@
     background-color: var(--primary-color);
     color: white;
     border-radius: 4px;
-    box-shadow: 0 0 10px #fff, 0 0 20px #fff inset;
+    box-shadow: 0 0 10px #fff, inset 0 0 20px #fff;
     font-size: 16px;
     text-decoration: none;
     cursor: pointer;
-    /* Transition for pop effect */
+
+    /* Add transition for hover effect */
     transition: transform 0.2s ease, box-shadow 0.2s ease;
   }
   .app-link img {
@@ -29,7 +31,7 @@
     height: 20px;
     flex-shrink: 0;
   }
-  /* Hover pop-up animation: lift and scale */
+  /* Hover animation: lift and pop */
   .app-link:hover {
     transform: translateY(-5px) scale(1.1);
     box-shadow: 0 0 20px #fff, inset 0 0 30px #fff;
@@ -39,21 +41,13 @@
 <body class="dark-mode">
 
 <header>
-  <div class="header-content">
+  <div class="header-content" style="display:flex; align-items:center; justify-content:space-between; width:100%; padding:1rem;">
     <div class="logo">TOS</div>
-    <div class="search-container">
-      <input type="text" id="searchBar" placeholder="Type Inside Me 👉 👈..." oninput="filterZones()">
-      <select id="sortOptions" onchange="sortZones()">
-        <option value="name">Name</option>
-        <option value="id">Release</option>
-        <option value="popular">Popular</option>
-      </select>
-    </div>
-    <div class="control-buttons">
+    <div style="display:flex; align-items:center; gap:1rem;">
       <button id="settings" style="background-color: var(--primary-color); color: white; border: none; border-radius: 4px; padding: 0.5rem 1rem; font-size: 16px;">
         <img src="setting.png" alt="settings" width="45px" />
       </button>
-      <!-- "Apps" button styled like the "Games" button with same hover animation -->
+      <!-- The "Apps" button styled to look like "Games" with hover pop animation -->
       <a href="apps.html" id="appsBtn" class="app-link">
         <img src="games-icon.png" alt="Games" />
         Apps
@@ -73,7 +67,7 @@
     <div id="container">Loading...</div>
   </details>
 </main>
-
+  
 <div id="zoneViewer">
   <div class="zone-header">
     <div class="zone-title">
@@ -123,13 +117,14 @@
 
 <script src="script.js"></script>
 <script>
+  // Keep your existing scripts...
   const search = new URLSearchParams(window.location.search);
   const privacy = search.get('privacy');
   if (privacy) {
     loadPrivacy();
   }
 
-  // Make the "Apps" button go to apps.html directly without popup
+  // Make the "Apps" button go directly to apps.html
   document.getElementById('appsBtn').addEventListener('click', function(e) {
     e.preventDefault();
     window.location.href = 'apps.html';
