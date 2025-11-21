@@ -30,6 +30,16 @@
     z-index: 10;
     box-shadow: 0 0 20px #fff, inset 0 0 30px #fff;
   }
+
+  /* New CSS: slide settings icon left when hovering over the container */
+  .settings-apps-container:hover #settings img {
+    transform: translateX(-5px);
+    transition: transform 0.3s ease;
+  }
+  /* Make sure the settings icon has transition for smooth effect */
+  #settings img {
+    transition: transform 0.3s ease;
+  }
 </style>
 </head>
 <body class="dark-mode">
@@ -45,9 +55,10 @@
         <option value="popular">Popular</option>
       </select>
     </div>
-    <div class="control-buttons" style="display:flex; align-items:center; gap:1rem;">
-      <button id="settings" style="background-color: var(--primary-color); color: white; border: none; border-radius: 4px; padding: 0.5rem 1rem; font-size: 16px; cursor:pointer;">
-        <img src="setting.png" alt="settings" width="45px" />
+    <!-- Wrap the settings button and Apps link in a container for hover effect -->
+    <div class="settings-apps-container" style="display:flex; align-items:center; gap:1rem;">
+      <button id="settings" style="background-color: var(--primary-color); color: white; border: none; border-radius: 4px;">
+        <img src="setting.png" alt="settings" width="45px" class="settings-icon" />
       </button>
       <!-- The "Apps" button styled to look like the "Games" button, with bold text -->
       <a href="apps.html" id="appsBtn">Apps</a>
