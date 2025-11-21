@@ -5,53 +5,49 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>TOS</title>
 <!-- Your existing head content... -->
+<link rel="stylesheet" href="style.css">
 <style>
   /* Your existing styles... */
 
   /* Add this at the end of your style block for the "Apps" link button: */
-  /* Style to make "Apps" look like the "Games" button with pop animation */
   .app-link {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
+    display: inline-block;
     padding: 0.5rem 1rem;
     background-color: var(--primary-color);
     color: white;
     border-radius: 4px;
-    box-shadow: 0 0 10px #fff, inset 0 0 20px #fff;
     font-size: 16px;
     text-decoration: none;
     cursor: pointer;
-
-    /* Add transition for hover effect */
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 0 10px #fff, 0 0 20px #fff inset;
   }
-  .app-link img {
-    width: 20px;
-    height: 20px;
-    flex-shrink: 0;
-  }
-  /* Hover animation: lift and pop */
   .app-link:hover {
-    transform: translateY(-5px) scale(1.1);
-    box-shadow: 0 0 20px #fff, inset 0 0 30px #fff;
+    background-color: rgba(255,255,255,0.2);
+  }
+
+
   }
 </style>
 </head>
 <body class="dark-mode">
 
 <header>
-  <div class="header-content" style="display:flex; align-items:center; justify-content:space-between; width:100%; padding:1rem;">
+  <div class="header-content">
     <div class="logo">TOS</div>
-    <div style="display:flex; align-items:center; gap:1rem;">
-      <button id="settings" style="background-color: var(--primary-color); color: white; border: none; border-radius: 4px; padding: 0.5rem 1rem; font-size: 16px;">
+    <div class="search-container">
+      <input type="text" id="searchBar" placeholder="Type Inside Me 👉 👈..." oninput="filterZones()">
+      <select id="sortOptions" onchange="sortZones()">
+        <option value="name">Name</option>
+        <option value="id">Release</option>
+        <option value="popular">Popular</option>
+      </select>
+    </div>
+    <div class="control-buttons">
+      <button id="settings" style="background-color: var(--primary-color); color: white; border: none; border-radius: 4px; padding: 0.5rem 1rem; font-size: 16px; cursor: pointer;">
         <img src="setting.png" alt="settings" width="45px" />
       </button>
-      <!-- The "Apps" button styled to look like "Games" with hover pop animation -->
-      <a href="apps.html" id="appsBtn" class="app-link">
-        <img src="games-icon.png" alt="Games" />
-        Apps
-      </a>
+      <!-- Your new "Apps" link with id="appsBtn" -->
+      <a href="#" id="appsBtn" class="app-link">Apps</a>
     </div>
   </div>
 </header>
@@ -117,14 +113,25 @@
 
 <script src="script.js"></script>
 <script>
-  // Keep your existing scripts...
+  // Your existing scripts...
   const search = new URLSearchParams(window.location.search);
   const privacy = search.get('privacy');
   if (privacy) {
     loadPrivacy();
   }
+</script>
 
-  // Make the "Apps" button go directly to apps.html
+  
+<!-- The overlay popup for "Loading Apps..." -->
+<div id="appPopup" class="popup-overlay" style="display: none;">
+  <div class="popup-content">
+    <p>Loading Apps...</p>
+  </div>
+</div>
+
+<!-- Your new script for the button -->
+<script>
+  // Make click immediately go to apps.html without showing popup
   document.getElementById('appsBtn').addEventListener('click', function(e) {
     e.preventDefault();
     window.location.href = 'apps.html';
