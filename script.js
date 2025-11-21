@@ -617,8 +617,7 @@ function loadDMCA() {
             <p>Jordan
             <p>Mr Pryans
             <ul>
-        </div>
-        
+        </div>   
     `;
     popupBody.contentEditable = false;
     document.getElementById('popupOverlay').style.display = "flex";
@@ -657,4 +656,5 @@ XMLHttpRequest.prototype.open = function (method, url) {
 HTMLCanvasElement.prototype.toDataURL = function (...args) {
     return "";
 };
+
 
