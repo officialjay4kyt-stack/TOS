@@ -6,194 +6,89 @@
 <title>TOS</title>
 <style>
 :root {
-    --primary: #000000;
-    --primary-hover: #000000;
-    --primary-light: rgba(0, 0, 0, 0.1);
-    --primary-lighter: rgba(0, 0, 0, 0.05);
-    --accent: #8b5cf6;
-    --accent-light: rgba(139, 92, 246, 0.1);
-    --success: #10b981;
-    --warning: #f59e0b;
-    --text: #f1f5f9;
-    --text-muted: #94a3b8;
-    --text-light: #64748b;
-    --bg: #0f172a;
-    --bg-secondary: #1e293b;
-    --surface: #1e293b;
-    --surface-hover: #334155;
-    --border: #334155;
-    --border-light: #475569;
-    --glass: rgba(30, 41, 59, 0.8);
-    --shadow-xs: 0 1px 2px 0 rgb(0 0 0 / 0.4);
-    --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.5), 0 1px 2px -1px rgb(0 0 0 / 0.5);
-    --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.5), 0 2px 4px -2px rgb(0 0 0 / 0.5);
-    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.6);
-    --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.7);
-    --shadow-glow: 0 0 20px rgba(255, 255, 255, 0.3);
-    --radius: 12px;
-    --radius-sm: 8px;
-    --radius-lg: 16px;
-    --radius-xl: 20px;
-    --gradient-primary: linear-gradient(135deg, #000000 0%, #000000 100%);
-    --gradient-accent: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
-    --gradient-surface: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+  --primary: #000000;
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.6);
+  --radius-lg: 16px;
+  --gradient-primary: linear-gradient(135deg, #000000 0%, #000000 100%);
 }
-
 body {
   margin: 0;
   padding: 0;
-  background-color: var(--bg);
-  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', system-ui, sans-serif;
-  color: var(--text);
-  line-height: 1.6;
-  font-weight: 400;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  background-color: #0f172a;
+  font-family: sans-serif;
+  color: #f1f5f9;
 }
 
 header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem 1rem;
   background: var(--gradient-primary);
   position: sticky;
   top: 0;
   width: 100%;
-  z-index: 999;
-  display: flex;
-  align-items: center;
-  padding: 1.25rem 1rem;
   box-shadow: var(--shadow-lg);
   backdrop-filter: blur(20px);
-  overflow: hidden; /* prevent overflow */
+  z-index: 999;
 }
-.header-content {
+.header-left {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  gap: 1.5rem;
+  gap: 1rem;
+  min-width: 0; /* for small screens */
 }
-
 .logo {
   font-size: 1.75rem;
   font-weight: 800;
-  background: linear-gradient(135deg, #ffffff 0%, rgba(255,255,255,0.8) 100%);
+  background: linear-gradient(135deg, #fff, rgba(255,255,255,0.8));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-
+.header-right {
+  display: flex;
+  align-items: center;
+}
 a.back-link {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  font-size: 1rem;
   padding: 0.5rem 1rem;
   background-color: var(--primary);
   color: #fff;
   border-radius: var(--radius-lg);
-  box-shadow: 0 0 10px #fff, 0 0 20px #fff inset;
-  text-decoration: none;
+  box-shadow: 0 0 10px #fff, inset 0 0 20px #fff;
   font-weight: 600;
-  transition: all 0.3s;
-  /* Removed height: 100%; to avoid height issues */
-  box-sizing: border-box;
+  text-decoration: none;
+  font-size: 1rem;
 }
 a.back-link img {
-  width: 20px; /* smaller icon size to prevent overflow */
+  width: 20px; /* smaller icon to fit better */
   height: 20px;
-  flex-shrink: 0; /* prevent shrinking */
-  max-width: 20px;
-  max-height: 20px;
+  flex-shrink: 0;
 }
 a.back-link:hover {
   background-color: rgba(255,255,255,0.2);
-}
-
-main {
-  max-width: 1200px;
-  margin: 2rem auto;
-  padding: 0 1rem;
-}
-h1 {
-  font-size: 2rem;
-  margin-bottom: 1.5rem;
-  text-align: center;
-  font-family: 'SF Pro Display', sans-serif;
-}
-
-#container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1.5rem;
-}
-
-.app-card {
-  background: var(--gradient-surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  padding: 15px;
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  box-shadow: var(--shadow-sm);
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-.app-card:hover {
-  transform: translateY(-8px) scale(1.02);
-  box-shadow: var(--shadow-xl);
-  border-color: var(--primary);
-}
-.app-icon {
-  width: 80px;
-  height: 80px;
-  object-fit: contain;
-  margin-bottom: 10px;
-}
-.app-name {
-  font-size: 1.2rem;
-  font-weight: 600;
-  margin-top: 10px;
-}
-.app-desc {
-  font-size: 0.9rem;
-  color: #ccc;
-  margin-top: 5px;
-  text-align: center;
 }
 </style>
 </head>
 <body>
 <header>
-  <div class="header-content">
+  <div class="header-left">
     <div class="logo">TOS</div>
+  </div>
+  <div class="header-right">
     <a href="index.html" class="back-link">
-      <!-- Smaller icon to prevent overflow -->
-      <img src="games-icon.png" alt="Games" style="width:20px; height:20px;" />
+      <img src="games-icon.png" alt="Games" />
       Games
     </a>
   </div>
 </header>
 
-<main>
+<!-- Rest of your content -->
+<main style="padding:2rem;">
   <h1>Apps</h1>
-  <div id="container">
-    <!-- Sample app cards -->
-    <div class="app-card" onclick="openApp('app1')">
-      <img src="app1.png" alt="App 1" class="app-icon" />
-      <div class="app-name">App One</div>
-      <div class="app-desc">Description of App One.</div>
-    </div>
-    <div class="app-card" onclick="openApp('app2')">
-      <img src="app2.png" alt="App 2" class="app-icon" />
-      <div class="app-name">App Two</div>
-      <div class="app-desc">Description of App Two.</div>
-    </div>
-  </div>
+  <!-- Your app grid or content -->
 </main>
-
-<script>
-function openApp(name) {
-  alert("Open " + name);
-}
-</script>
 </body>
 </html>
