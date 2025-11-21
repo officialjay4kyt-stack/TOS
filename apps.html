@@ -46,7 +46,7 @@
     align-items: center;
     gap: 1rem;
     flex-shrink: 1;
-    position: relative; /* for tooltip positioning */
+    position: relative; /* for slide popup positioning */
   }
 
   .logo {
@@ -57,7 +57,7 @@
     -webkit-text-fill-color: transparent;
   }
 
-  /* Container for the "Games" button with popup */
+  /* Container for the "Games" button with slide popup */
   #gamesContainer {
     position: relative;
     display: inline-block;
@@ -76,6 +76,8 @@
     text-decoration: none;
     font-size: 1rem;
     cursor: pointer;
+    position: relative;
+    overflow: hidden;
   }
 
   #gamesBtn img {
@@ -84,32 +86,36 @@
     flex-shrink: 0;
   }
 
-  /* Tooltip style */
-  #tooltip {
-    display: none;
+  /* The slide popup element */
+  #slidePopup {
     position: absolute;
-    bottom: 125%; /* position above the button */
+    bottom: 100%; /* position above the button */
     left: 50%;
-    transform: translateX(-50%);
+    transform: translateX(-50%) translateY(10px); /* start slightly below */
+    opacity: 0;
     background-color: #222;
     color: #fff;
     padding: 0.5rem 1rem;
     border-radius: 4px;
-    white-space: nowrap;
     box-shadow: var(--shadow-lg);
+    white-space: nowrap;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    pointer-events: none; /* avoid blocking hover */
     z-index: 999;
   }
 
-  /* Show tooltip on hover */
-  #gamesContainer:hover #tooltip {
-    display: block;
+  /* Show the popup with animation on hover */
+  #gamesContainer:hover #slidePopup {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+    pointer-events: auto;
   }
 
-  /* Optional: add arrow to tooltip */
-  #tooltip::after {
+  /* Optional arrow for the popup */
+  #slidePopup::after {
     content: "";
     position: absolute;
-    top: 100%; /* bottom of tooltip */
+    top: 100%; /* bottom of popup */
     left: 50%;
     margin-left: -5px;
     border-width: 5px;
@@ -184,13 +190,13 @@
     <div class="logo">TOS</div>
   </div>
   <div class="header-right">
-    <!-- Wrapper for the button and popup -->
+    <!-- Container for button + slide popup -->
     <div id="gamesContainer">
       <a href="index.html" id="gamesBtn" class="app-link">
         <img src="games-icon.png" alt="Games" />
         Games
       </a>
-      <div id="tooltip">Go back to the homepage</div>
+      <div id="slidePopup">Go back to the homepage</div>
     </div>
   </div>
 </header>
