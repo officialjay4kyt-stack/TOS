@@ -45,8 +45,6 @@
     display: flex;
     align-items: center;
     gap: 1rem;
-    flex-shrink: 1;
-    position: relative; /* for slide popup positioning */
   }
 
   .logo {
@@ -57,12 +55,7 @@
     -webkit-text-fill-color: transparent;
   }
 
-  /* Container for the "Games" button with slide popup */
-  #gamesContainer {
-    position: relative;
-    display: inline-block;
-  }
-
+  /* Style for the Games button with pop animation */
   #gamesBtn {
     display: flex;
     align-items: center;
@@ -76,8 +69,15 @@
     text-decoration: none;
     font-size: 1rem;
     cursor: pointer;
-    position: relative;
-    overflow: hidden;
+
+    /* Add transition for pop effect */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  #gamesBtn:hover {
+    /* Make it pop up with scale and shadow */
+    transform: translateY(-5px) scale(1.1);
+    box-shadow: 0 0 20px #fff, inset 0 0 30px #fff;
   }
 
   #gamesBtn img {
@@ -86,44 +86,7 @@
     flex-shrink: 0;
   }
 
-  /* The slide popup element */
-  #slidePopup {
-    position: absolute;
-    bottom: 100%; /* position above the button */
-    left: 50%;
-    transform: translateX(-50%) translateY(10px); /* start slightly below */
-    opacity: 0;
-    background-color: #222;
-    color: #fff;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    box-shadow: var(--shadow-lg);
-    white-space: nowrap;
-    transition: transform 0.3s ease, opacity 0.3s ease;
-    pointer-events: none; /* avoid blocking hover */
-    z-index: 999;
-  }
-
-  /* Show the popup with animation on hover */
-  #gamesContainer:hover #slidePopup {
-    opacity: 1;
-    transform: translateX(-50%) translateY(0);
-    pointer-events: auto;
-  }
-
-  /* Optional arrow for the popup */
-  #slidePopup::after {
-    content: "";
-    position: absolute;
-    top: 100%; /* bottom of popup */
-    left: 50%;
-    margin-left: -5px;
-    border-width: 5px;
-    border-style: solid;
-    border-color: #222 transparent transparent transparent;
-  }
-
-  /* Rest of your styles... (app grid, etc.) */
+  /* Rest styles... (app grid, etc.) */
   main {
     max-width: 1200px;
     margin: 2rem auto;
@@ -190,14 +153,11 @@
     <div class="logo">TOS</div>
   </div>
   <div class="header-right">
-    <!-- Container for button + slide popup -->
-    <div id="gamesContainer">
-      <a href="index.html" id="gamesBtn" class="app-link">
-        <img src="games-icon.png" alt="Games" />
-        Games
-      </a>
-      <div id="slidePopup">Go back to the homepage</div>
-    </div>
+    <!-- The button with pop-up animation on hover -->
+    <a href="index.html" id="gamesBtn" class="app-link">
+      <img src="games-icon.png" alt="Games" />
+      Games
+    </a>
   </div>
 </header>
 
