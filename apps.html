@@ -4,7 +4,6 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>TOS</title>
-<!-- Your existing head content... -->
 <style>
   :root {
     --primary: #000000;
@@ -21,7 +20,6 @@
     color: #f1f5f9;
   }
 
-  /* Updated header styles for layout */
   header {
     display: flex;
     justify-content: space-between;
@@ -34,26 +32,23 @@
     box-shadow: var(--shadow-lg);
     backdrop-filter: blur(20px);
     box-sizing: border-box;
-    overflow: hidden; /* prevent overflow */
   }
 
-  /* Container for left side: logo + search (if any) */
   .header-left {
     display: flex;
     align-items: center;
     gap: 1rem;
-    min-width: 0; /* allows shrinking on small screens */
+    min-width: 0;
   }
 
-  /* Container for right side: buttons */
   .header-right {
     display: flex;
     align-items: center;
     gap: 1rem;
-    flex-shrink: 1; /* allow shrinking if needed */
+    flex-shrink: 1;
+    position: relative; /* for tooltip positioning */
   }
 
-  /* Logo style */
   .logo {
     font-size: 1.75rem;
     font-weight: 800;
@@ -62,7 +57,12 @@
     -webkit-text-fill-color: transparent;
   }
 
-  /* Style for the "Games" link with icon */
+  /* Container for the "Games" button with popup */
+  #gamesContainer {
+    position: relative;
+    display: inline-block;
+  }
+
   #gamesBtn {
     display: flex;
     align-items: center;
@@ -75,21 +75,49 @@
     font-weight: 600;
     text-decoration: none;
     font-size: 1rem;
+    cursor: pointer;
   }
 
-  /* Small icon size for consistency */
   #gamesBtn img {
     width: 20px;
     height: 20px;
     flex-shrink: 0;
   }
 
-  /* Hover effect for the button */
-  #gamesBtn:hover {
-    background-color: rgba(255,255,255,0.2);
+  /* Tooltip style */
+  #tooltip {
+    display: none;
+    position: absolute;
+    bottom: 125%; /* position above the button */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #222;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    white-space: nowrap;
+    box-shadow: var(--shadow-lg);
+    z-index: 999;
   }
 
-  /* Your other styles... (app grid, etc.) */
+  /* Show tooltip on hover */
+  #gamesContainer:hover #tooltip {
+    display: block;
+  }
+
+  /* Optional: add arrow to tooltip */
+  #tooltip::after {
+    content: "";
+    position: absolute;
+    top: 100%; /* bottom of tooltip */
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #222 transparent transparent transparent;
+  }
+
+  /* Rest of your styles... (app grid, etc.) */
   main {
     max-width: 1200px;
     margin: 2rem auto;
@@ -149,18 +177,21 @@
   }
 </style>
 </head>
-<body class="dark-mode">
+<body>
 
 <header>
   <div class="header-left">
     <div class="logo">TOS</div>
   </div>
   <div class="header-right">
-    <!-- "Games" button linking to index.html -->
-    <a href="index.html" id="gamesBtn" class="app-link">
-      <img src="games-icon.png" alt="Games" />
-      Games
-    </a>
+    <!-- Wrapper for the button and popup -->
+    <div id="gamesContainer">
+      <a href="index.html" id="gamesBtn" class="app-link">
+        <img src="games-icon.png" alt="Games" />
+        Games
+      </a>
+      <div id="tooltip">Go back to the homepage</div>
+    </div>
   </div>
 </header>
 
