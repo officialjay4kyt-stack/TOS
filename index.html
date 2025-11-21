@@ -9,7 +9,7 @@
 <style>
   /* Your existing styles... */
 
-  /* Style for the "Apps" button to match "Games" button shape and hover pop effect */
+  /* Style for the "Apps" button to look like the "Games" button, with hover pop effect */
   #appsBtn {
     display: inline-flex;
     align-items: center;
@@ -22,6 +22,7 @@
     font-size: 16px;
     text-decoration: none;
     cursor: pointer;
+    font-weight: bold; /* make the text bold */
     transition: transform 0.2s ease, box-shadow 0.2s ease;
   }
   #appsBtn:hover {
@@ -37,7 +38,7 @@
   <div class="header-content" style="display:flex; justify-content: space-between; align-items:center; padding:1rem;">
     <div class="logo" style="font-size:1.75rem; font-weight:800; background:linear-gradient(135deg, #fff, rgba(255,255,255,0.8)); -webkit-background-clip:text; -webkit-text-fill-color:transparent;">TOS</div>
     <div class="search-container">
-      <input type="text" id="searchBar" placeholder="Type Inside Me 👉 👈..." oninput="filterZones()"/>
+      <input type="text" id="searchBar" placeholder="Type Inside Me 👉 👈..." oninput="filterZones()" />
       <select id="sortOptions" onchange="sortZones()">
         <option value="name">Name</option>
         <option value="id">Release</option>
@@ -48,7 +49,7 @@
       <button id="settings" style="background-color: var(--primary-color); color: white; border: none; border-radius: 4px; padding: 0.5rem 1rem; font-size: 16px; cursor:pointer;">
         <img src="setting.png" alt="settings" width="45px" />
       </button>
-      <!-- The "Apps" button styled to look like the "Games" button -->
+      <!-- The "Apps" button styled to look like the "Games" button, with bold text -->
       <a href="apps.html" id="appsBtn">Apps</a>
     </div>
   </div>
