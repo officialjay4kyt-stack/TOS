@@ -5,27 +5,34 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>TOS</title>
 <!-- Your existing head content... -->
-<link rel="stylesheet" href="style.css">
 <style>
   /* Your existing styles... */
 
-  /* Add this at the end of your style block for the "Apps" link button: */
+  /* Style for the "Apps" link to match the "Games" button with hover pop-up animation */
   .app-link {
-    display: inline-block;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
     padding: 0.5rem 1rem;
     background-color: var(--primary-color);
     color: white;
     border-radius: 4px;
+    box-shadow: 0 0 10px #fff, 0 0 20px #fff inset;
     font-size: 16px;
     text-decoration: none;
     cursor: pointer;
-    box-shadow: 0 0 10px #fff, 0 0 20px #fff inset;
+    /* Transition for pop effect */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
   }
+  .app-link img {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+  }
+  /* Hover pop-up animation: lift and scale */
   .app-link:hover {
-    background-color: rgba(255,255,255,0.2);
-  }
-
-
+    transform: translateY(-5px) scale(1.1);
+    box-shadow: 0 0 20px #fff, inset 0 0 30px #fff;
   }
 </style>
 </head>
@@ -43,11 +50,14 @@
       </select>
     </div>
     <div class="control-buttons">
-      <button id="settings" style="background-color: var(--primary-color); color: white; border: none; border-radius: 4px; padding: 0.5rem 1rem; font-size: 16px; cursor: pointer;">
+      <button id="settings" style="background-color: var(--primary-color); color: white; border: none; border-radius: 4px; padding: 0.5rem 1rem; font-size: 16px;">
         <img src="setting.png" alt="settings" width="45px" />
       </button>
-      <!-- Your new "Apps" link with id="appsBtn" -->
-      <a href="#" id="appsBtn" class="app-link">Apps</a>
+      <!-- "Apps" button styled like the "Games" button with same hover animation -->
+      <a href="apps.html" id="appsBtn" class="app-link">
+        <img src="games-icon.png" alt="Games" />
+        Apps
+      </a>
     </div>
   </div>
 </header>
@@ -63,7 +73,7 @@
     <div id="container">Loading...</div>
   </details>
 </main>
-  
+
 <div id="zoneViewer">
   <div class="zone-header">
     <div class="zone-title">
@@ -113,25 +123,13 @@
 
 <script src="script.js"></script>
 <script>
-  // Your existing scripts...
   const search = new URLSearchParams(window.location.search);
   const privacy = search.get('privacy');
   if (privacy) {
     loadPrivacy();
   }
-</script>
 
-  
-<!-- The overlay popup for "Loading Apps..." -->
-<div id="appPopup" class="popup-overlay" style="display: none;">
-  <div class="popup-content">
-    <p>Loading Apps...</p>
-  </div>
-</div>
-
-<!-- Your new script for the button -->
-<script>
-  // Make click immediately go to apps.html without showing popup
+  // Make the "Apps" button go to apps.html directly without popup
   document.getElementById('appsBtn').addEventListener('click', function(e) {
     e.preventDefault();
     window.location.href = 'apps.html';
@@ -140,8 +138,3 @@
 
 </body>
 </html>
-
-
-
-
-
