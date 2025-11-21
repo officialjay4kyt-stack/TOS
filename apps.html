@@ -4,91 +4,196 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>TOS</title>
+<!-- Your existing head content... -->
 <style>
-:root {
-  --primary: #000000;
-  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.6);
-  --radius-lg: 16px;
-  --gradient-primary: linear-gradient(135deg, #000000 0%, #000000 100%);
-}
-body {
-  margin: 0;
-  padding: 0;
-  background-color: #0f172a;
-  font-family: sans-serif;
-  color: #f1f5f9;
-}
+  :root {
+    --primary: #000000;
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.6);
+    --radius-lg: 16px;
+    --gradient-primary: linear-gradient(135deg, #000, #000);
+  }
 
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1.25rem 1rem;
-  background: var(--gradient-primary);
-  position: sticky;
-  top: 0;
-  width: 100%;
-  box-shadow: var(--shadow-lg);
-  backdrop-filter: blur(20px);
-  z-index: 999;
-}
-.header-left {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  min-width: 0; /* for small screens */
-}
-.logo {
-  font-size: 1.75rem;
-  font-weight: 800;
-  background: linear-gradient(135deg, #fff, rgba(255,255,255,0.8));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-.header-right {
-  display: flex;
-  align-items: center;
-}
-a.back-link {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.5rem 1rem;
-  background-color: var(--primary);
-  color: #fff;
-  border-radius: var(--radius-lg);
-  box-shadow: 0 0 10px #fff, inset 0 0 20px #fff;
-  font-weight: 600;
-  text-decoration: none;
-  font-size: 1rem;
-}
-a.back-link img {
-  width: 20px; /* smaller icon to fit better */
-  height: 20px;
-  flex-shrink: 0;
-}
-a.back-link:hover {
-  background-color: rgba(255,255,255,0.2);
-}
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: #0f172a;
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', system-ui, sans-serif;
+    color: #f1f5f9;
+  }
+
+  /* Updated header styles for layout */
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 1rem;
+    background: var(--gradient-primary);
+    position: sticky;
+    top: 0;
+    width: 100%;
+    box-shadow: var(--shadow-lg);
+    backdrop-filter: blur(20px);
+    box-sizing: border-box;
+    overflow: hidden; /* prevent overflow */
+  }
+
+  /* Left container: logo + search */
+  .header-left {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    min-width: 0; /* allows shrinking on small screens */
+  }
+
+  /* Right container: buttons */
+  .header-right {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-shrink: 1; /* allow shrinking if needed */
+  }
+
+  /* Logo style */
+  .logo {
+    font-size: 1.75rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #fff, rgba(255,255,255,0.8));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* Style for the "Apps" link with icon */
+  #appsBtn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background-color: var(--primary);
+    color: #fff;
+    border-radius: var(--radius-lg);
+    box-shadow: 0 0 10px #fff, inset 0 0 20px #fff;
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 1rem;
+  }
+
+  /* Make the icon small enough and prevent shrinkage */
+  #appsBtn img {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+  }
+
+  /* Optional hover effect for "Apps" button */
+  #appsBtn:hover {
+    background-color: rgba(255,255,255,0.2);
+  }
+
+  /* Your other styles remain unchanged... */
+  /* For brevity, I won't repeat all your app grid & other styles here. */
+
+  main {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+  }
+
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    font-family: 'SF Pro Display', sans-serif;
+  }
+
+  #container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .app-card {
+    background: var(--gradient-surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 15px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: var(--shadow-sm);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .app-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: var(--shadow-xl);
+    border-color: var(--primary);
+  }
+
+  .app-icon {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    margin-bottom: 10px;
+  }
+
+  .app-name {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-top: 10px;
+  }
+
+  .app-desc {
+    font-size: 0.9rem;
+    color: #ccc;
+    margin-top: 5px;
+    text-align: center;
+  }
 </style>
 </head>
-<body>
+<body class="dark-mode">
+
 <header>
   <div class="header-left">
     <div class="logo">TOS</div>
+    <!-- Search inputs omitted for brevity -->
   </div>
   <div class="header-right">
-    <a href="index.html" class="back-link">
+    <button id="settings" style="background-color: var(--primary); color: white; border: none; border-radius: 4px; padding: 0.5rem 1rem; font-size: 16px;">
+      <img src="setting.png" alt="settings" width="45px" />
+    </button>
+    <!-- Your "Apps" link -->
+    <a href="#" id="appsBtn" class="app-link">
       <img src="games-icon.png" alt="Games" />
-      Games
+      Apps
     </a>
   </div>
 </header>
 
-<!-- Rest of your content -->
-<main style="padding:2rem;">
+<main>
   <h1>Apps</h1>
-  <!-- Your app grid or content -->
+  <div id="container">
+    <!-- Sample app cards -->
+    <div class="app-card" onclick="openApp('app1')">
+      <img src="app1.png" alt="App 1" class="app-icon" />
+      <div class="app-name">App One</div>
+      <div class="app-desc">Description of App One.</div>
+    </div>
+    <div class="app-card" onclick="openApp('app2')">
+      <img src="app2.png" alt="App 2" class="app-icon" />
+      <div class="app-name">App Two</div>
+      <div class="app-desc">Description of App Two.</div>
+    </div>
+  </div>
 </main>
+
+<script>
+function openApp(name) {
+  alert("Open " + name);
+}
+
+// Your other scripts...
+</script>
+
 </body>
 </html>
