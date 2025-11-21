@@ -8,7 +8,7 @@
 <style>
   /* Your existing styles... */
 
-  /* Style for the "Apps" button */
+  /* Make sure the "Apps" button has transition for pop effect */
   #appsBtn {
     display: flex;
     align-items: center;
@@ -21,23 +21,22 @@
     font-size: 16px;
     text-decoration: none;
     cursor: pointer;
-    transition: transform 0.2s ease;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
   }
   #appsBtn img {
     width: 20px;
     height: 20px;
   }
 
-  /* When hovering over the "Apps" button, make it pop out */
+  /* When hovering over "Apps", pop it out */
   #appsBtn:hover {
     transform: translateY(-5px) scale(1.1);
     box-shadow: 0 0 20px #fff, inset 0 0 30px #fff;
   }
 
-  /* Make the "Settings" button slide to the left when "Apps" is hovered */
+  /* When "Apps" is hovered, slide the "Settings" button to the left */
   #appsBtn:hover ~ #settings {
     transform: translateX(-10px);
-    transition: transform 0.2s ease;
   }
 </style>
 </head>
@@ -60,10 +59,10 @@
   </div>
 </header>
 
-<!-- rest of your HTML remains unchanged -->
+<!-- Rest of your page content remains unchanged -->
 
 <script>
-  // Your existing scripts...
+  // Keep your existing scripts...
   document.getElementById('appsBtn').addEventListener('click', function(e) {
     e.preventDefault();
     window.location.href = 'apps.html';
