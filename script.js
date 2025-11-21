@@ -590,7 +590,7 @@ function showContact() {
 }
 
 function loadPrivacy() {
-    document.getElementById('popupTitle').textContent = "Privacy Policy";
+    document.getElementById('popupTitle').textContent = "Info";
     const popupBody = document.getElementById('popupBody');
     popupBody.innerHTML = `
         <div style="max-height: 60vh; overflow-y: auto;">
@@ -654,6 +654,7 @@ XMLHttpRequest.prototype.open = function (method, url) {
 HTMLCanvasElement.prototype.toDataURL = function (...args) {
     return "";
 };
+
 
 
 
