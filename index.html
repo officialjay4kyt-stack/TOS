@@ -9,13 +9,27 @@
 <style>
   /* Your existing styles... */
 
-  /* Only change the animation of the #appsBtn to match the "pop-up" style */
-  #appsBtn {
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  /* Wrap the "Apps" button in a container for sliding over the "Settings" button */
+  .apps-container {
+    display: inline-block;
+    position: relative; /* for layering */
+    z-index: 1; /* default layer */
   }
-  #appsBtn:hover {
-    transform: translateY(-5px) scale(1.1);
-    box-shadow: 0 0 20px #fff, inset 0 0 30px #fff;
+
+  /* When hover, bring the container to front to slide over the settings button */
+  .apps-container:hover {
+    z-index: 10;
+    transition: z-index 0.2s ease;
+  }
+
+  /* Add transition to the button for smooth sliding */
+  #appsBtn {
+    transition: transform 0.2s ease;
+  }
+
+  /* Slide over effect when hovering over container */
+  .apps-container:hover #appsBtn {
+    transform: translate(10px, -10px);
   }
 </style>
 </head>
@@ -36,8 +50,13 @@
       <button id="settings" style="background-color: var(--primary-color); color: white; border: none; border-radius: 4px; padding: 0.5rem 1rem; font-size: 16px;">
         <img src="setting.png" alt="settings" width="45px" />
       </button>
-      <!-- Your existing "Apps" link, now with the animated hover effect -->
-      <a href="#" id="appsBtn" class="app-link">Apps</a>
+      <!-- Wrap "Apps" in the container for slide-over effect -->
+      <div class="apps-container">
+        <a href="#" id="appsBtn" class="app-link">
+          <img src="games-icon.png" alt="Games" />
+          Apps
+        </a>
+      </div>
     </div>
   </div>
 </header>
