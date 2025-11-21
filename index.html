@@ -4,12 +4,10 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>TOS</title>
-<!-- Your existing head content... -->
-<link rel="stylesheet" href="style.css" />
 <style>
   /* Your existing styles... */
 
-  /* Style for the "Apps" button to look like the "Games" button, with hover pop effect */
+  /* Style for the "Apps" button to look like the "Games" button, with bold text (already present) */
   #appsBtn {
     display: inline-flex;
     align-items: center;
@@ -21,8 +19,8 @@
     box-shadow: 0 0 10px #fff, inset 0 0 20px #fff; /* same as "Games" button */
     font-size: 16px;
     text-decoration: none;
-    cursor: pointer;
     font-weight: bold; /* make the text bold */
+    cursor: pointer;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
   }
   #appsBtn:hover {
@@ -31,27 +29,27 @@
     box-shadow: 0 0 20px #fff, inset 0 0 30px #fff;
   }
 
-  /* Container wrapping settings icon and the "Apps" link for hover effect */
-  .header-controls {
+  /* Container for the header right buttons for hover effect */
+  .header-control-group {
     display: flex;
     align-items: center;
     gap: 1rem;
   }
 
-  /* Wrap the controls in a hover container to animate settings icon */
-  .hover-container {
+  /* Wrap the settings icon and "Apps" in a container for hover effect */
+  .hover-area {
     display: flex;
     align-items: center;
     gap: 1rem;
   }
 
-  /* When hovering over the container, slide the settings icon left */
-  .hover-container:hover .settings-icon {
+  /* When hovering over the hover-area, slide the settings icon left */
+  .hover-area:hover .settings-icon {
     transform: translateX(-5px);
     transition: transform 0.3s ease;
   }
 
-  /* Smooth transition for the settings icon */
+  /* Make sure the settings icon has transition for smooth effect */
   .settings-icon {
     display: inline-block;
     transition: transform 0.3s ease;
@@ -71,13 +69,11 @@
         <option value="popular">Popular</option>
       </select>
     </div>
-    <!-- Wrap the controls in a hover container -->
-    <div class="hover-container" style="display:flex; align-items:center; gap:1rem;">
-      <!-- Settings button with icon -->
+    <!-- Wrap settings and "Apps" in a hover area for effect -->
+    <div class="hover-area" style="display:flex; align-items:center; gap:1rem;">
       <button id="settings" style="background-color: var(--primary-color); color: white; border: none; border-radius: 4px;">
         <img src="setting.png" alt="settings" width="45px" class="settings-icon" />
       </button>
-      <!-- The "Games" content is loaded dynamically, so no static button here -->
       <!-- "Apps" link -->
       <a href="apps.html" id="appsBtn">Apps</a>
     </div>
@@ -87,7 +83,7 @@
 <!-- Rest of your page content remains unchanged -->
 
 <script>
-  // Your scripts...
+  // Your existing scripts...
   const search = new URLSearchParams(window.location.search);
   const privacy = search.get('privacy');
   if (privacy) {
