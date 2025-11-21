@@ -37,7 +37,7 @@
     overflow: hidden; /* prevent overflow */
   }
 
-  /* Left container: logo + search */
+  /* Container for left side: logo + search (if any) */
   .header-left {
     display: flex;
     align-items: center;
@@ -45,7 +45,7 @@
     min-width: 0; /* allows shrinking on small screens */
   }
 
-  /* Right container: buttons */
+  /* Container for right side: buttons */
   .header-right {
     display: flex;
     align-items: center;
@@ -62,8 +62,8 @@
     -webkit-text-fill-color: transparent;
   }
 
-  /* Style for the "Apps" link with icon */
-  #appsBtn {
+  /* Style for the "Games" link with icon */
+  #gamesBtn {
     display: flex;
     align-items: center;
     gap: 0.5rem;
@@ -77,21 +77,19 @@
     font-size: 1rem;
   }
 
-  /* Make the icon small enough and prevent shrinkage */
-  #appsBtn img {
+  /* Small icon size for consistency */
+  #gamesBtn img {
     width: 20px;
     height: 20px;
     flex-shrink: 0;
   }
 
-  /* Optional hover effect for "Apps" button */
-  #appsBtn:hover {
+  /* Hover effect for the button */
+  #gamesBtn:hover {
     background-color: rgba(255,255,255,0.2);
   }
 
-  /* Your other styles remain unchanged... */
-  /* For brevity, I won't repeat all your app grid & other styles here. */
-
+  /* Your other styles... (app grid, etc.) */
   main {
     max-width: 1200px;
     margin: 2rem auto;
@@ -156,16 +154,12 @@
 <header>
   <div class="header-left">
     <div class="logo">TOS</div>
-    <!-- Search inputs omitted for brevity -->
   </div>
   <div class="header-right">
-    <button id="settings" style="background-color: var(--primary); color: white; border: none; border-radius: 4px; padding: 0.5rem 1rem; font-size: 16px;">
-      <img src="setting.png" alt="settings" width="45px" />
-    </button>
-    <!-- Your "Apps" link -->
-    <a href="#" id="appsBtn" class="app-link">
+    <!-- "Games" button linking to index.html -->
+    <a href="index.html" id="gamesBtn" class="app-link">
       <img src="games-icon.png" alt="Games" />
-      Apps
+      Games
     </a>
   </div>
 </header>
@@ -191,8 +185,6 @@
 function openApp(name) {
   alert("Open " + name);
 }
-
-// Your other scripts...
 </script>
 
 </body>
