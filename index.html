@@ -5,32 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>TOS</title>
 <!-- Your existing head content... -->
+<link rel="stylesheet" href="style.css">
 <style>
   /* Your existing styles... */
 
-  /* Add this at the end of your style block for the "Apps" link button: */
-  /* Style to make "Apps" look and animate like the "Games" button on the apps page */
+  /* Only change the animation of the #appsBtn to match the "pop-up" style */
   #appsBtn {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.5rem 1rem;
-    background-color: var(--primary-color);
-    color: white;
-    border-radius: 4px;
-    box-shadow: 0 0 10px #fff, inset 0 0 20px #fff;
-    font-size: 16px;
-    text-decoration: none;
-    cursor: pointer;
-    /* Transition for hover pop effect */
     transition: transform 0.2s ease, box-shadow 0.2s ease;
   }
-  #appsBtn img {
-    width: 20px;
-    height: 20px;
-    flex-shrink: 0;
-  }
-  /* Hover animation: lift and pop */
   #appsBtn:hover {
     transform: translateY(-5px) scale(1.1);
     box-shadow: 0 0 20px #fff, inset 0 0 30px #fff;
@@ -54,11 +36,8 @@
       <button id="settings" style="background-color: var(--primary-color); color: white; border: none; border-radius: 4px; padding: 0.5rem 1rem; font-size: 16px;">
         <img src="setting.png" alt="settings" width="45px" />
       </button>
-      <!-- Original "Apps" link, now styled with the same look & animation as "Games" button -->
-      <a href="apps.html" id="appsBtn" class="app-link">
-        <img src="games-icon.png" alt="Games" />
-        Apps
-      </a>
+      <!-- Your existing "Apps" link, now with the animated hover effect -->
+      <a href="#" id="appsBtn" class="app-link">Apps</a>
     </div>
   </div>
 </header>
@@ -74,7 +53,7 @@
     <div id="container">Loading...</div>
   </details>
 </main>
-
+  
 <div id="zoneViewer">
   <div class="zone-header">
     <div class="zone-title">
@@ -131,7 +110,7 @@
     loadPrivacy();
   }
 
-  // Make the "Apps" button go directly to apps.html
+  // Make the "Apps" button go to apps.html
   document.getElementById('appsBtn').addEventListener('click', function(e) {
     e.preventDefault();
     window.location.href = 'apps.html';
