@@ -7,9 +7,9 @@
 <!-- Your existing head content... -->
 <link rel="stylesheet" href="style.css" />
 <style>
-  /* Existing styles... */
+  /* Your existing styles... */
 
-  /* Style for the "Apps" button to look like the "Games" button, with bold text and hover expand */
+  /* Style for the "Apps" button to look like the "Games" button, with bold text */
   #appsBtn {
     display: inline-flex;
     align-items: center;
@@ -20,28 +20,33 @@
     border-radius: 16px; /* match your shape */
     box-shadow: 0 0 10px #fff, inset 0 0 20px #fff; /* same as "Games" button */
     font-size: 16px;
-    font-weight: bold; /* bold text */
+    font-weight: bold; /* make text bold */
     text-decoration: none;
     cursor: pointer;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transition: scale 0.2s ease;
   }
   #appsBtn:hover {
     transform: scale(1.2);
     z-index: 10;
   }
 
-  /* Style for the icon inside the "Apps" button */
-  #appsBtn img {
-    width: 20px;
-    height: 20px;
-    flex-shrink: 0;
-    /* Add transition for smooth sliding */
+  /* Container that wraps settings icon and apps button for hover effect */
+  .header-right-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  /* Make the settings icon (inside button) slide left when hovering over the container */
+  .header-right-container:hover .settings-icon {
+    transform: translateX(-5px);
     transition: transform 0.3s ease;
   }
 
-  /* When hovering over the "Apps" button, slide the icon to the left */
-  #appsBtn:hover img {
-    transform: translateX(-5px);
+  /* Keep transition smooth for the icon */
+  .settings-icon {
+    display: inline-block;
+    transition: transform 0.3s ease;
   }
 </style>
 </head>
@@ -58,24 +63,22 @@
         <option value="popular">Popular</option>
       </select>
     </div>
-    <div class="control-buttons" style="display:flex; align-items:center; gap:1rem;">
+    <!-- Wrap the right controls (settings + apps) in a container -->
+    <div class="header-right-container" style="display:flex; align-items:center; gap:1rem;">
+      <!-- Settings button with icon class 'settings-icon' -->
       <button id="settings" style="background-color: var(--primary-color); color: white; border: none; border-radius: 4px; padding: 0.5rem 1rem; font-size: 16px; cursor:pointer;">
-        <img src="setting.png" alt="settings" width="45px" />
+        <img src="setting.png" alt="settings" width="45px" class="settings-icon" />
       </button>
-      <!-- Your "Apps" button with icon that slides out on hover -->
-      <a href="apps.html" id="appsBtn">
-        <img src="apps-icon.png" alt="Apps" />
-        Apps
-      </a>
+      <!-- Apps button -->
+      <a href="apps.html" id="appsBtn">Apps</a>
     </div>
   </div>
 </header>
 
-<!-- Rest of your content remains unchanged -->
+<!-- Rest of your page content... -->
 
-<script src="script.js"></script>
 <script>
-  // Your scripts...
+  // Your existing scripts...
   const search = new URLSearchParams(window.location.search);
   const privacy = search.get('privacy');
   if (privacy) {
