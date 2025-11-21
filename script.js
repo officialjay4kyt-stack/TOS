@@ -581,11 +581,10 @@ settings.addEventListener('click', () => {
 });
 
 function showContact() {
-    document.getElementById('popupTitle').textContent = "Contact";
+    document.getElementById('popupTitle').textContent = "Contacts";
     const popupBody = document.getElementById('popupBody');
     popupBody.innerHTML = `
-    <p>Discord: https://discord.gg/NAFw4ykZ7n</p>
-    <p>Email: gn.math.business@gmail.com</p>`;
+    <p>Discord: https://discord.gg/X5PCSzJV</p>`;
     popupBody.contentEditable = false;
     document.getElementById('popupOverlay').style.display = "flex";
 }
@@ -655,6 +654,7 @@ XMLHttpRequest.prototype.open = function (method, url) {
 HTMLCanvasElement.prototype.toDataURL = function (...args) {
     return "";
 };
+
 
 
 
