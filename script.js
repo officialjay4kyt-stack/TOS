@@ -610,31 +610,13 @@ function loadPrivacy() {
 }
 
 function loadDMCA() {
-    document.getElementById('popupTitle').textContent = "DMCA";
+    document.getElementById('popupTitle').textContent = "Credit";
     const popupBody = document.getElementById('popupBody');
     popupBody.innerHTML = `
-        <div class="dmca-content">
+        <div class="Credit">
             <p>
-                If you own or developed a game that is on <strong>gn-math</strong> 
-                and would like it removed, please do one of the following:
-            </p>
-            <ol>
-                <li>
-                    <a href="https://discord.gg/D4c9VFYWyU" target="_blank" rel="noopener noreferrer">
-                        Join the Discord
-                    </a> and DM <strong>breadbb</strong> or ping me in a public channel 
-                    <strong>[INSTANT RESPONSE]</strong>
-                </li>
-                <li>
-                    Email me at 
-                    <a href="mailto:gn.math.business@gmail.com">gn.math.business@gmail.com</a> 
-                    with the subject starting with <code>!DMCA</code>.
-                    <strong>[DELAYED RESPONSE]</strong>
-                </li>
-            </ol>
-            <p>
-                If you are going to do an email, please show proof you own the game before I have to ask.
-            </p>
+                Jordan 
+                Mr Pryans"
         </div>
     `;
     popupBody.contentEditable = false;
