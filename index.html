@@ -62,9 +62,9 @@
       </button>
       <!-- The "Apps" button styled to look like the "Games" button, with bold text -->
       <a href="apps.html" id="appsBtn" style="display:flex; align-items:center; gap:8px; font-weight:bold; text-decoration:none; padding:0.5rem 1rem; background-color: var(--primary-color); color:#fff; border-radius:16px; box-shadow:0 0 10px #fff, inset 0 0 20px #fff; transition: transform 0.2s ease, box-shadow 0.2s ease;">
-  <img src="https://img.icons8.com/?size=100&id=ETI89AT9Xeqo&format=png&color=000000" alt="Apps Icon" style="width:20px; height:20px; filter: brightness(0) invert(1);" />
-  Apps
-</a>
+        <img src="https://img.icons8.com/?size=100&id=ETI89AT9Xeqo&format=png&color=000000" alt="Apps Icon" style="width:20px; height:20px; filter: brightness(0) invert(1);" />
+        Apps
+      </a>
     </div>
   </div>
 </header>
@@ -130,6 +130,31 @@
   </div>
 </footer>
 
+<!-- Add sound elements and script for all hover/click sounds -->
+<audio id="hoverSound" src="hover.mp3" preload="auto"></audio>
+<audio id="clickSound" src="click.mp3" preload="auto"></audio>
+
+<script>
+  // Get sound elements
+  const hoverSound = document.getElementById('hoverSound');
+  const clickSound = document.getElementById('clickSound');
+
+  // Select all elements to have sound effects
+  const hoverElements = document.querySelectorAll('a, button');
+
+  // Add event listeners to all selected elements
+  hoverElements.forEach(elem => {
+    elem.addEventListener('mouseenter', () => {
+      hoverSound.currentTime = 0;
+      hoverSound.play();
+    });
+    elem.addEventListener('click', () => {
+      clickSound.currentTime = 0;
+      clickSound.play();
+    });
+  });
+</script>
+
 <script src="script.js"></script>
 <script>
   // Your existing scripts...
@@ -142,5 +167,3 @@
 
 </body>
 </html>
-
-
