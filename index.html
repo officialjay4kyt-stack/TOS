@@ -165,31 +165,8 @@
   // Initial attachment
   attachSoundsToAll();
 
-  // Observe for dynamically loaded game items
-  const gameContainer = document.getElementById('container');
-  if (gameContainer) {
-    const observer = new MutationObserver((mutations) => {
-      mutations.forEach(mutation => {
-        mutation.addedNodes.forEach(node => {
-          if (node.nodeType === 1) {
-            if (node.matches('.game-item')) {
-              attachSoundEvents([node]);
-            }
-            const gameEls = node.querySelectorAll('.game-item');
-            if (gameEls.length > 0) {
-              attachSoundEvents([...gameEls]);
-            }
-          }
-        });
-      });
-    });
-    observer.observe(gameContainer, { childList: true, subtree: true });
-  }
-
   // Rest of your existing scripts...
 
-  // Example: your listZones() and other calls
-  listZones(); // assuming this loads your games
 </script>
 
 <script src="script.js"></script>
@@ -204,3 +181,4 @@
 
 </body>
 </html>
+
