@@ -55,12 +55,10 @@
         <option value="popular">Popular</option>
       </select>
     </div>
-    <!-- Wrap the settings button and Apps link in a container for hover effect -->
     <div class="settings-apps-container" style="display:flex; align-items:center; gap:1rem;">
       <button id="settings" style="background-color: var(--primary-color); color: white; border: none; border-radius: 4px;">
         <img src="setting.png" alt="settings" width="45px" class="settings-icon" />
       </button>
-      <!-- The "Apps" button styled to look like the "Games" button, with bold text -->
       <a href="apps.html" id="appsBtn" style="display:flex; align-items:center; gap:8px; font-weight:bold; text-decoration:none; padding:0.5rem 1rem; background-color: var(--primary-color); color:#fff; border-radius:16px; box-shadow:0 0 10px #fff, inset 0 0 20px #fff; transition: transform 0.2s ease, box-shadow 0.2s ease;">
         <img src="https://img.icons8.com/?size=100&id=ETI89AT9Xeqo&format=png&color=000000" alt="Apps Icon" style="width:20px; height:20px; filter: brightness(0) invert(1);" />
         Apps
@@ -130,45 +128,60 @@
   </div>
 </footer>
 
-<!-- Add sound elements for all hover/click effects -->
+<!-- Add sound elements for hover and click effects -->
 <audio id="hoverSound" src="hover.mp3" preload="auto"></audio>
 <audio id="clickSound" src="click.mp3" preload="auto"></audio>
 
 <script>
-  // Your existing scripts...
+  // Wait for DOM to be fully loaded
+  document.addEventListener("DOMContentLoaded", () => {
+    const hoverSound = document.getElementById('hoverSound');
+    const clickSound = document.getElementById('clickSound');
 
-  // Create and append the sound elements
-  const hoverSound = document.getElementById('hoverSound');
-  const clickSound = document.getElementById('clickSound');
-
-  // Function to attach hover and click sounds to elements
-  function attachSoundEvents(elements) {
-    elements.forEach(el => {
-      el.addEventListener('mouseenter', () => {
-        hoverSound.currentTime = 0;
-        hoverSound.play();
+    // Function to attach hover and click sounds
+    function attachSoundEvents(elements) {
+      elements.forEach(el => {
+        el.addEventListener('mouseenter', () => {
+          hoverSound.currentTime = 0;
+          hoverSound.play();
+        });
+        el.addEventListener('click', () => {
+          clickSound.currentTime = 0;
+          clickSound.play();
+        });
       });
-      el.addEventListener('click', () => {
-        clickSound.currentTime = 0;
-        clickSound.play();
-      });
-    });
-  }
+    }
 
-  // Attach to all static elements
-  function attachSoundsToAll() {
+    // Attach to static elements
     document.querySelectorAll('a, button').forEach(el => attachSoundEvents([el]));
     // Attach to existing game items if any
     document.querySelectorAll('.game-item').forEach(el => attachSoundEvents([el]));
-  }
 
-  // Initial attachment
-  attachSoundsToAll();
+    // Setup MutationObserver for dynamically loaded game items
+    const gameContainer = document.getElementById('container');
+    if (gameContainer) {
+      const observer = new MutationObserver((mutations) => {
+        mutations.forEach(mutation => {
+          mutation.addedNodes.forEach(node => {
+            if (node.nodeType === 1) {
+              if (node.matches('.game-item')) {
+                attachSoundEvents([node]);
+              }
+              const gameEls = node.querySelectorAll('.game-item');
+              if (gameEls.length > 0) {
+                attachSoundEvents([...gameEls]);
+              }
+            }
+          });
+        });
+      });
+      observer.observe(gameContainer, { childList: true, subtree: true });
+    }
 
-  // Rest of your existing scripts...
-
+    // Call your initial zone list or load functions here
+    listZones();
+  });
 </script>
-
 <script src="script.js"></script>
 <script>
   // Your existing scripts...
@@ -181,4 +194,3 @@
 
 </body>
 </html>
-
